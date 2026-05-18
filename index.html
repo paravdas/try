@@ -9,16 +9,21 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
                         primary: '#1E3A8A', // Deep Blue
                         secondary: '#3B82F6', // Bright Blue
                         accent: '#F59E0B', // Amber
-                        dark: '#172554', // Darker Blue (Updated from slate-900)
+                        dark: '#172554', // Darker Blue
                     }
                 }
             }
@@ -31,13 +36,13 @@
             -webkit-text-fill-color: transparent;
         }
         .hero-bg {
-            background: linear-gradient(rgba(23, 37, 84, 0.85), rgba(23, 37, 84, 0.95)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
+            background: linear-gradient(rgba(23, 37, 84, 0.88), rgba(23, 37, 84, 0.96)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
         }
         .hover-card {
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .hover-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
@@ -45,13 +50,13 @@
         
         @keyframes heartbeat { 
             0%, 100% { transform: scale(1); } 
-            50% { transform: scale(1.15); } 
+            50% { transform: scale(1.1); } 
         }
         .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
         
         @keyframes wiggle { 
-            0%, 100% { transform: rotate(-8deg); } 
-            50% { transform: rotate(8deg); } 
+            0%, 100% { transform: rotate(-6deg); } 
+            50% { transform: rotate(6deg); } 
         }
         .animate-wiggle { animation: wiggle 0.4s ease-in-out infinite; }
         
@@ -60,20 +65,10 @@
             100% { transform: translateX(-50%); }
         }
         .animate-scroll-x {
-            animation: scroll-x 60s linear infinite; 
+            animation: scroll-x 40s linear infinite; 
             width: max-content;
         }
         .animate-scroll-x:hover { animation-play-state: paused; }
-
-        @keyframes scroll-tabs {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-scroll-tabs {
-            animation: scroll-tabs 35s linear infinite;
-            width: max-content;
-        }
-        .animate-scroll-tabs:hover { animation-play-state: paused; }
 
         @keyframes pichka-breathe {
             0% { transform: scale(1.4, 0.6) translateY(12px); border-radius: 50% 50% 40% 40%; }
@@ -96,16 +91,6 @@
         }
         .animate-comic-bounce { animation: comic-bounce 1.5s ease-in-out infinite; transform-origin: bottom right; }
 
-        /* Soundwave Equalizer Animation */
-        @keyframes eq {
-            0%, 100% { height: 4px; }
-            50% { height: 16px; }
-        }
-        .eq-bar { animation: eq 1s ease-in-out infinite; }
-        .eq-bar:nth-child(2) { animation-delay: 0.2s; }
-        .eq-bar:nth-child(3) { animation-delay: 0.4s; }
-        .eq-bar:nth-child(4) { animation-delay: 0.1s; }
-
         /* 3D Modern Sweep Shine */
         @keyframes sweep-shine {
             0% { transform: translateX(-150%) skewX(-15deg); }
@@ -115,7 +100,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 30%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
             animation: sweep-shine 4s infinite ease-in-out;
             z-index: 10;
             pointer-events: none;
@@ -133,8 +118,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20 gap-4 xl:gap-12">
                 <!-- BRAND LOGO -->
-                <div class="flex-shrink-0 cursor-pointer group flex items-center gap-2">
-                    <div class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-xl shadow-md group-hover:bg-secondary transition">
+                <div class="flex-shrink-0 cursor-pointer group flex items-center gap-2" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center text-xl shadow-md group-hover:bg-secondary transition-all">
                         <i class="fa-solid fa-house-chimney"></i>
                     </div>
                     <span class="font-sans font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tighter">Res<span class="text-primary">tech</span></span>
@@ -147,8 +132,8 @@
                     <a href="#about" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">About</a>
                     <a href="#services" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Services</a>
                     <a href="#demo" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Demos</a>
-                    <a href="#technologies-page" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Tech</a>
                     <a href="#integrations-page" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Integrations</a>
+                    <a href="#technologies-page" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Tech Stack</a>
                     <a href="#developers-page" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Developers</a>
                     <a href="#pricing" class="text-gray-700 hover:text-primary font-medium transition whitespace-nowrap">Pricing</a>
                     
@@ -157,19 +142,20 @@
 
                 <!-- Global Nav Tools -->
                 <div class="flex items-center gap-2 sm:gap-3 md:gap-4 ml-auto lg:ml-0">
-                    <a href="https://chat.whatsapp.com/" target="_blank" class="flex items-center gap-1 bg-[#25D366] text-white px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold hover:bg-[#20bd5a] transition-all shadow-md shadow-green-500/30 whitespace-nowrap">
-                        <i class="fa-brands fa-whatsapp text-xs sm:text-sm animate-pulse"></i>
+                    <a href="https://wa.me/917340337074?text=Hello%20Restech%20Team,%20I%20would%20like%20to%20join%20the%20community." target="_blank" class="flex items-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded-full text-xs font-bold hover:bg-[#20bd5a] transition-all shadow-md shadow-green-500/30 whitespace-nowrap">
+                        <i class="fa-brands fa-whatsapp text-sm animate-pulse"></i>
                         <span class="hidden sm:inline">Join WhatsApp Group</span>
                         <span class="sm:hidden">Join Group</span>
                     </a>
                     <div class="lg:hidden flex items-center">
-                        <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none" aria-label="Toggle Mobile Menu">
                             <i class="fa-solid fa-bars text-2xl sm:text-3xl"></i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+        
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg max-h-[80vh] overflow-y-auto">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -178,9 +164,8 @@
                 <a href="#about" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">About Us</a>
                 <a href="#services" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Services</a>
                 <a href="#demo" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Demo Websites</a>
-                <a href="#calling-integration" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Calling Integrations</a>
-                <a href="#technologies-page" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Technologies</a>
                 <a href="#integrations-page" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Integrations</a>
+                <a href="#technologies-page" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Technologies</a>
                 <a href="#developers-page" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Our Developers</a>
                 <a href="#pricing" class="block px-3 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-md font-medium text-base">Pricing</a>
                 <a href="#contact" class="block px-3 py-3 mt-2 text-center text-white bg-primary font-bold rounded-md text-base">Contact Us</a>
@@ -191,580 +176,52 @@
     <!-- Main Home Page Content -->
     <div id="home-view">
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-bg pt-32 md:pt-36 lg:pt-40 pb-16 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/90 to-transparent"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="w-full overflow-hidden sm:overflow-visible">
-                    <div class="inline-flex items-center justify-center py-1.5 px-5 rounded-full bg-gradient-to-r from-white/5 to-white/10 border border-white/10 shadow-[0_0_20px_rgba(59,130,246,0.15)] backdrop-blur-md mb-5 group hover:bg-white/20 transition-all duration-300 cursor-default">
-                        <span class="text-blue-50 font-semibold text-xs sm:text-sm tracking-wide drop-shadow-sm">Real Estate Software Technology Pvt. Ltd.</span>
-                    </div>
-                    <h1 class="text-[3.5vw] sm:text-[3.5vw] md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-none mb-1 whitespace-nowrap tracking-tighter">
-                        Empowering Real Estate with <span class="gradient-text">Next-Gen Software</span>
-                    </h1>
-                    <p class="text-lg text-gray-300 mb-8 max-w-xl mt-1">
-                        We build high-performance real estate portals, custom CRM software, and intelligent mobile applications equipped with seamless global integrations.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#services" class="bg-secondary text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition shadow-lg shadow-blue-500/40 flex items-center gap-2">
-                            Explore Solutions <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="#offer" class="bg-transparent border border-gray-400 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition">
-                            View Special Offers
-                        </a>
-                    </div>
-                </div>
-                <!-- Integrations Floating Badges -->
-                <div class="hidden lg:block relative h-[380px]">
-                    <div class="absolute top-0 left-10 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
-                        <i class="fa-brands fa-whatsapp text-green-500 text-3xl"></i>
-                        <div>
-                            <p class="text-sm font-bold text-gray-800">WhatsApp API</p>
-                            <p class="text-xs text-gray-500">Automated Leads</p>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg pt-32 md:pt-36 lg:pt-40 pb-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/90 to-transparent"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="w-full">
+                        <div class="inline-flex items-center justify-center py-1.5 px-5 rounded-full bg-gradient-to-r from-white/5 to-white/10 border border-white/10 shadow-[0_0_20px_rgba(59,130,246,0.15)] backdrop-blur-md mb-5 group hover:bg-white/20 transition-all duration-300 cursor-default">
+                            <span class="text-blue-50 font-semibold text-xs sm:text-sm tracking-wide">Real Estate Software Technology Pvt. Ltd.</span>
                         </div>
-                    </div>
-                    <div class="absolute top-1/2 right-0 -translate-y-1/2 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
-                        <i class="fa-solid fa-credit-card text-purple-500 text-3xl"></i>
-                        <div>
-                            <p class="text-sm font-bold text-gray-800">Payment Gateway</p>
-                            <p class="text-xs text-gray-500">Razorpay, PayPal</p>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-20 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">
-                        <i class="fa-solid fa-headset text-blue-500 text-3xl"></i>
-                        <div>
-                            <p class="text-sm font-bold text-gray-800">Call Integration</p>
-                            <p class="text-xs text-gray-500">Cloud Telephony</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seamless Integrations Strip -->
-    <div class="bg-white py-6 md:py-8 border-b border-gray-200 overflow-x-hidden">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">Our Seamless Third-Party Integrations</p>
-            <div class="w-full overflow-x-auto hide-scrollbar">
-                <div class="flex flex-nowrap items-center justify-start lg:justify-center gap-8 md:gap-16 min-w-max pb-2 px-2">
-                    <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-3xl" style="color: #25D366;"></i><span class="font-bold text-gray-800">WhatsApp</span></div>
-                    <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-phone-volume text-2xl text-blue-500"></i><span class="font-bold text-gray-800">Cloud Calling</span></div>
-                    <div class="flex items-center gap-2 shrink-0" title="Stripe"><i class="fa-brands fa-stripe text-5xl" style="color: #635BFF;"></i></div>
-                    <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-envelope-circle-check text-2xl text-red-500"></i><span class="font-bold text-gray-800">Email SMTP</span></div>
-                    <div class="flex items-center gap-2 shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="28px" height="28px">
-                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
-                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
-                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
-                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
-                        </svg>
-                        <span class="font-bold text-gray-800">Maps API</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Special Offer Section ($30 Package) - UPGRADED DESIGN -->
-    <section id="offer" class="py-20 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black border-y border-slate-800">
-        <!-- Animated Glowing Orbs -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500/20 rounded-full blur-[100px] animate-pulse"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-red-500/20 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
-        
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="bg-white/5 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-14 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group">
-                <!-- Shimmer Effect -->
-                <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:animate-[sweep-shine_3s_infinite]"></div>
-                
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs md:text-sm font-black px-6 py-2 rounded-bl-3xl uppercase tracking-widest shadow-lg border-b border-l border-red-700 z-20">
-                    <i class="fa-solid fa-fire animate-pulse mr-1"></i> Mega Offer
-                </div>
-                
-                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight relative z-10 leading-tight md:leading-tight">
-                    Launch Your Real Estate Business Online <br class="hidden lg:block"> Starting At Just <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] text-5xl md:text-7xl align-middle">$30</span>
-                </h2>
-                
-                <p class="text-base md:text-lg text-gray-400 mb-10 max-w-4xl mx-auto leading-relaxed relative z-10">
-                    Don't lose clients to competitors. We will build a complete, high-converting Property Dealer Website for you. List properties, capture verified leads, and build a powerful digital brand instantly!
-                </p>
-
-                <!-- Features Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto text-left relative z-10">
-                    <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
-                        <i class="fa-solid fa-code text-yellow-400 mt-1"></i>
-                        <div><h4 class="text-white font-bold text-sm">Premium UI</h4><p class="text-xs text-gray-500">Custom Design</p></div>
-                    </div>
-                    <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
-                        <i class="fa-brands fa-whatsapp text-green-400 mt-1"></i>
-                        <div><h4 class="text-white font-bold text-sm">WhatsApp</h4><p class="text-xs text-gray-500">Direct Chat API</p></div>
-                    </div>
-                    <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
-                        <i class="fa-solid fa-bolt text-blue-400 mt-1"></i>
-                        <div><h4 class="text-white font-bold text-sm">Fast Loading</h4><p class="text-xs text-gray-500">Global Servers</p></div>
-                    </div>
-                    <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
-                        <i class="fa-solid fa-headset text-purple-400 mt-1"></i>
-                        <div><h4 class="text-white font-bold text-sm">Free Support</h4><p class="text-xs text-gray-500">Technical Help</p></div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
-                    <div class="bg-black/40 border border-white/10 px-8 py-4 rounded-2xl flex items-center gap-4 shadow-xl">
-                        <div class="flex flex-col items-end">
-                            <span class="text-gray-500 line-through text-lg md:text-xl font-bold leading-none">$299</span>
-                            <span class="text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-2 py-0.5 rounded mt-1">90% OFF</span>
-                        </div>
-                        <div class="h-12 w-px bg-white/20"></div>
-                        <span class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 drop-shadow-md">$30</span>
-                    </div>
-                    <a href="https://wa.me/917340337074?text=Hello,%20I%20am%20interested%20in%20the%20$30%20Property%20Dealer%20Website%20offer." target="_blank" class="bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-8 md:px-10 py-5 rounded-2xl font-black hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(37,211,102,0.4)] text-lg md:text-xl flex items-center gap-3 border border-green-400">
-                        Claim $30 Offer <i class="fa-brands fa-whatsapp text-2xl animate-wiggle"></i>
-                    </a>
-                </div>
-                <p class="text-gray-500 text-xs mt-8 font-bold tracking-widest uppercase relative z-10">* Limited to the first 50 clients this month. No hidden charges.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us Section (Moved to Home Page) -->
-    <section id="about" class="pt-10 pb-8 bg-white relative overflow-hidden">
-        <!-- Decorative bg -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full filter blur-[80px] opacity-60"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full filter blur-[80px] opacity-60"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-3">
-                <span class="inline-block py-1 px-4 rounded-full bg-blue-100 text-primary font-bold text-sm mb-2 border border-blue-200 shadow-sm"><i class="fa-solid fa-building-user"></i> Corporate Profile</span>
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-2">About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Restech</span></h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">Driving the global digital transformation of the real estate industry through innovative, secure, and scalable PropTech solutions.</p>
-            </div>
-            
-            <div class="max-w-5xl mx-auto bg-gradient-to-br from-gray-50 to-white p-8 md:p-12 rounded-[2.5rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
-                <div class="space-y-6 text-lg text-gray-700 leading-relaxed font-medium">
-                    <p>Welcome to <strong class="text-primary font-black">Real Estate Software Technology Private Limited (Restech)</strong>, a pioneering force in the global PropTech industry. Headquartered in Bengaluru, India, we specialize in delivering enterprise-grade digital infrastructure tailored exclusively for real estate businesses globally.</p>
-                    <p>Our expert engineering team builds comprehensive digital ecosystems—including dynamic property portals, custom CRMs, intelligent mobile applications, and lead-routing API integrations—that empower brokers, agencies, and builders to scale seamlessly.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-10">
-                <!-- Mission -->
-                <div class="bg-blue-950 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
-                    <div class="absolute -right-10 -top-10 text-9xl text-white/5 group-hover:scale-110 transition-transform"><i class="fa-solid fa-bullseye"></i></div>
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-md border border-white/20"><i class="fa-solid fa-rocket text-blue-300"></i></div>
-                    <h3 class="text-2xl font-black mb-3">Our Mission</h3>
-                    <p class="text-blue-100/80 leading-relaxed">Our mission is to make modern digital technology accessible and affordable for every real estate business, helping them generate more leads, automate operations, and build stronger trust online.</p>
-                </div>
-                <!-- Vision -->
-                <div class="bg-blue-950 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
-                    <div class="absolute -right-10 -top-10 text-9xl text-white/5 group-hover:scale-110 transition-transform"><i class="fa-solid fa-eye"></i></div>
-                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-md border border-white/20"><i class="fa-solid fa-globe text-cyan-300"></i></div>
-                    <h3 class="text-2xl font-black mb-3">Our Vision</h3>
-                    <p class="text-blue-100/80 leading-relaxed">To become the world's most trusted technology partner for the real estate sector, creating flawless software architectures that connect buyers, sellers, and agents globally.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="pt-12 pb-10 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Restech AI Google-like Search Bar -->
-            <div class="max-w-3xl mx-auto mb-20 relative z-20">
-                <div class="text-center mb-6">
-                    <div class="inline-flex items-center gap-2 text-primary font-black text-xl tracking-tight mb-2">
-                        <i class="fa-solid fa-wand-magic-sparkles text-accent"></i> Restech AI
-                    </div>
-                    <p class="text-gray-500 text-sm">Ask anything about real estate software, CRM, or our services.</p>
-                </div>
-                
-                <form id="restech-ai-form" class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
-                        <i class="fa-solid fa-robot text-gray-400 group-focus-within:text-cyan-500 transition-colors text-lg"></i>
-                    </div>
-                    <input type="text" id="ai-search-input" class="block w-full pl-14 pr-16 py-4 bg-white border border-gray-200 rounded-full text-lg shadow-[0_5px_15px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.08)] focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-400 focus:shadow-[0_8px_25px_rgba(34,211,238,0.15)] transition-all outline-none text-gray-800" placeholder="Search Restech AI...">
-                    <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-transparent text-gray-400 hover:text-cyan-500 transition-colors duration-300 z-10 cursor-pointer group/searchbtn">
-                        <i class="fa-solid fa-magnifying-glass text-[20px] group-hover/searchbtn:scale-110 transition-all duration-300"></i>
-                    </button>
-                </form>
-                
-                <!-- AI Results Box -->
-                <div id="ai-results-box" class="hidden mt-6 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden text-left p-6 md:p-8 relative">
-                    <div id="ai-loading" class="hidden flex flex-col items-center justify-center gap-3 py-6">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 bg-primary rounded-full animate-bounce" style="animation-delay: 0s;"></div>
-                            <div class="w-3 h-3 bg-secondary rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
-                            <div class="w-3 h-3 bg-accent rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
-                        </div>
-                        <span class="text-gray-500 font-medium mt-2">Restech AI is typing...</span>
-                    </div>
-                    <div id="ai-response-content" class="text-gray-700 leading-relaxed text-base md:text-lg"></div>
-                    <button id="ai-close-btn" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors">
-                        <i class="fa-solid fa-xmark text-lg"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Services Grid -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-base text-secondary font-semibold tracking-wide uppercase">Our Services</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Enterprise Software Solutions
-                </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                    We build end-to-end digital infrastructure for the global real estate market.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service Items -->
-                <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/20 border border-blue-800">
-                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-globe text-2xl text-white"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Real Estate Website</h3>
-                    <p class="text-blue-100 mb-4">Complete property listing websites with advanced search, filtering, map view, and broker dashboards. High-end UI/UX designs.</p>
-                </div>
-                <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/20 border border-blue-800">
-                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-users-gear text-2xl text-white"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Custom CRM Software</h3>
-                    <p class="text-blue-100 mb-4">Manage leads, track sales pipelines, automate follow-ups, and assign tasks to agents with our tailor-made systems.</p>
-                </div>
-                <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/20 border border-blue-800">
-                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-mobile-screen-button text-2xl text-white"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Mobile Applications</h3>
-                    <p class="text-blue-100 mb-4">Cross-platform mobile apps (Android & iOS) for property buyers, sellers, and agents to connect and transact on the go.</p>
-                </div>
-                <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/20 border border-blue-800">
-                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-plug-circle-bolt text-2xl text-white"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">API & Integrations</h3>
-                    <p class="text-blue-100 mb-4">We connect your software with external tools. Call routing, WhatsApp auto-replies, and secure payment gateways.</p>
-                </div>
-                <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/20 border border-blue-800">
-                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-code text-2xl text-white"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">Custom Development</h3>
-                    <p class="text-blue-100 mb-4">Need something unique? We build bespoke software architectures tailored exactly to your unique business operational logic.</p>
-                </div>
-                <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/20 border border-blue-800">
-                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-headset text-2xl text-white"></i></div>
-                    <h3 class="text-xl font-bold text-white mb-3">IT Support</h3>
-                    <p class="text-blue-100 mb-4">We don't just build; we guide. Get 24/7 technical support, server maintenance, and strategic IT consulting.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Company Stats Strip -->
-    <section class="py-4 bg-gray-50 relative z-20">
-        <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-full p-2 md:p-3 shadow-sm border border-gray-100 flex flex-row justify-between items-center relative overflow-hidden">
-                <!-- Subtle Colorful Gradient Background -->
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 opacity-70 pointer-events-none"></div>
-                
-                <!-- Stat 1 -->
-                <div class="flex flex-row items-center gap-1.5 sm:gap-3 relative z-10 w-1/3 justify-center border-r border-gray-100 hover:scale-105 transition-transform duration-300">
-                    <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white flex items-center justify-center text-[10px] md:text-lg shadow-sm shrink-0">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <div class="text-left flex flex-col justify-center">
-                        <div class="text-xs sm:text-lg md:text-2xl font-black text-gray-800 leading-none">50<span class="text-blue-500">+</span></div>
-                        <p class="text-[7px] sm:text-[9px] md:text-[11px] text-gray-500 font-bold uppercase tracking-tighter md:tracking-widest mt-0.5 leading-tight whitespace-nowrap">In-House Experts</p>
-                    </div>
-                </div>
-
-                <!-- Stat 2 -->
-                <div class="flex flex-row items-center gap-1.5 sm:gap-3 relative z-10 w-1/3 justify-center border-r border-gray-100 hover:scale-105 transition-transform duration-300">
-                    <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 text-white flex items-center justify-center text-[10px] md:text-lg shadow-sm shrink-0">
-                        <i class="fa-solid fa-piggy-bank"></i>
-                    </div>
-                    <div class="text-left flex flex-col justify-center">
-                        <div class="text-xs sm:text-lg md:text-2xl font-black text-gray-800 leading-none">80<span class="text-pink-500">%</span></div>
-                        <p class="text-[7px] sm:text-[9px] md:text-[11px] text-gray-500 font-bold uppercase tracking-tighter md:tracking-widest mt-0.5 leading-tight whitespace-nowrap">Saving On Cost</p>
-                    </div>
-                </div>
-
-                <!-- Stat 3 -->
-                <div class="flex flex-row items-center gap-1.5 sm:gap-3 relative z-10 w-1/3 justify-center hover:scale-105 transition-transform duration-300">
-                    <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-white flex items-center justify-center text-[10px] md:text-lg shadow-sm shrink-0">
-                        <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <div class="text-left flex flex-col justify-center">
-                        <div class="text-xs sm:text-lg md:text-2xl font-black text-gray-800 leading-none">3000<span class="text-green-500">+</span></div>
-                        <p class="text-[7px] sm:text-[9px] md:text-[11px] text-gray-500 font-bold uppercase tracking-tighter md:tracking-widest mt-0.5 leading-tight whitespace-nowrap">Projects Delivered</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Demos Portfolio Section -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW ISOLATED MEGA OFFER SECTION: $30 Website -->
-    <section class="py-20 relative bg-gray-100 border-t border-gray-300" id="mega-offer" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-            <!-- Glowing Background Effect -->
-            <div class="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-accent to-orange-500 rounded-[2.5rem] blur-xl opacity-30 animate-pulse pointer-events-none"></div>
-            
-            <div class="relative bg-white border-2 border-accent/30 rounded-3xl p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.1)] overflow-hidden">
-                <!-- Golden Ribbon / Banner Tag -->
-                <div class="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs md:text-sm font-black px-6 py-2 rounded-bl-2xl shadow-md uppercase tracking-widest border-b border-l border-red-700">
-                    Special Offer for Property Dealers and Property Brokers
-                </div>
-
-                <div class="flex flex-col lg:flex-row items-center gap-10">
-                    <!-- Left: Content & Features -->
-                    <div class="flex-1 text-left">
-                        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
-                            Single Page Property <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-600">Business Website</span>
-                        </h2>
-                        
-                        <p class="text-lg text-gray-600 font-medium mb-6 leading-relaxed">
-                            A $30 investment is like the cost of a regular coffee meeting, but here it sets up your entire Real Estate business online! Why delay your digital growth? Get a fully functioning, professional website crafted exclusively for you.
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+                            Empowering Real Estate with <span class="gradient-text">Next-Gen Software</span>
+                        </h1>
+                        <p class="text-lg text-gray-300 mb-8 max-w-xl">
+                            We build high-performance real estate portals, custom CRM software, and intelligent mobile applications equipped with seamless global integrations.
                         </p>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-6">
-                            <!-- Feature Points -->
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-robot"></i></div>
-                                <div><h4 class="font-bold text-gray-900 text-sm">Trained AI Assistant</h4><p class="text-xs text-gray-500">A human-like smart chatbot fed with your company data to market your business & handle clients 24/7.</p></div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-brands fa-whatsapp text-lg"></i></div>
-                                <div><h4 class="font-bold text-gray-900 text-sm">WhatsApp & Call Buttons</h4><p class="text-xs text-gray-500">Directly integrated floating buttons so clients can connect with your agents instantly.</p></div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-bullhorn"></i></div>
-                                <div><h4 class="font-bold text-gray-900 text-sm">Free Digital Marketing</h4><p class="text-xs text-gray-500">Google Listing setup, Instagram account setup, customized video reels, and social media posting.</p></div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-palette"></i></div>
-                                <div><h4 class="font-bold text-gray-900 text-sm">100% Custom Design</h4><p class="text-xs text-gray-500">Live preview sessions with our team. We'll update the layout exactly as you dictate until it's perfect.</p></div>
-                            </div>
-                        </div>
-                        
-                        <p class="text-sm font-bold text-green-600 bg-green-50 px-4 py-2 rounded-lg inline-block border border-green-200">
-                            <i class="fa-solid fa-circle-check"></i> No extra charges. Everything listed above is included in the $30 package!
-                        </p>
-                    </div>
-
-                    <!-- Right: Pricing & CTA -->
-                    <div class="shrink-0 w-full lg:w-72 bg-gradient-to-b from-dark to-blue-900 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden border-2 border-blue-800">
-                        <!-- BG Decor -->
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-accent rounded-full filter blur-[50px] opacity-40"></div>
-                        
-                        <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-2 relative z-10">Total Investment</p>
-                        <div class="flex items-center justify-center gap-1 mb-2 relative z-10">
-                            <span class="text-6xl font-black text-white drop-shadow-lg">$30</span>
-                        </div>
-                        <p class="text-accent text-xs font-black uppercase tracking-widest mb-6 bg-accent/20 px-3 py-1 rounded-full border border-accent/30 inline-block relative z-10">One-Time Setup</p>
-                        
-                        <a href="https://wa.me/917340337074?text=Hello,%20I%20am%20interested%20in%20the%20$30%20Single%20Page%20Property%20Business%20Information%20Website%20offer." target="_blank" class="w-full bg-gradient-to-r from-accent to-yellow-500 text-dark font-black px-6 py-4 rounded-xl hover:scale-105 hover:shadow-[0_0_20px_rgba(245,158,11,0.6)] transition-all flex items-center justify-center gap-2 relative z-10 text-lg">
-                            Claim Offer <i class="fa-brands fa-whatsapp text-2xl"></i>
-                        </a>
-                        <p class="text-white/50 text-[10px] mt-4 font-semibold uppercase">*Limited Time Offer</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section: Enterprise Cost Estimates -->
-    <section id="pricing" class="pt-24 pb-28 relative overflow-hidden bg-blue-950">
-        <!-- 3D Glowing Background Elements -->
-        <div class="absolute top-10 left-10 w-72 h-72 bg-blue-600 rounded-full filter blur-[120px] opacity-20 animate-pulse"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600 rounded-full filter blur-[150px] opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <!-- Main Headers restored above the 3 boxes -->
-            <div class="text-center max-w-4xl mx-auto mb-20">
-                <h2 class="inline-block py-1 px-4 rounded-full bg-white/10 text-cyan-300 font-bold text-sm mb-4 border border-white/20 backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.3)]">Custom Development Estimates</h2>
-                <p class="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6 drop-shadow-lg">
-                    Enterprise Software <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Cost Estimates</span>
-                </p>
-                <p class="mt-4 max-w-3xl text-lg text-gray-400 mx-auto leading-relaxed">
-                    We deliver 100% custom-designed platforms. The packages below are baseline examples to give you an idea of the investment. For exact project scoping and confirmed customized quotes, please consult directly with our engineering team.
-                </p>
-            </div>
-
-            <!-- The 3 Enterprise Pricing Boxes -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto items-end">
-                <!-- Pricing Card 1: Dynamic Website -->
-                <div class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 border-b-[8px] border-b-cyan-700 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_40px_rgba(8,145,178,0.5)] group flex flex-col h-full">
-                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-cyan-500 rounded-full filter blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
-                    <div class="text-center mb-8 relative z-10">
-                        <div class="w-16 h-16 mx-auto bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"><i class="fa-solid fa-laptop-code"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Dynamic Website</h3>
-                        <p class="text-gray-400 text-sm h-10">Perfect for agencies showcasing properties.</p>
-                        <div class="mt-6 flex justify-center items-baseline gap-1">
-                            <span class="text-5xl font-black text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">$299</span>
-                            <span class="text-gray-400 font-medium">/starts</span>
-                        </div>
-                    </div>
-                    <div class="flex-grow mb-8 relative z-10">
-                        <ul class="space-y-4">
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-lg shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>Custom Premium Design</span></li>
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-lg shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>Dynamic Property Listings</span></li>
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-lg shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>WhatsApp Button Integration</span></li>
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-lg shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>Admin Panel / CMS</span></li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/917340337074?text=Hello,%20I%20want%20to%20discuss%20the%20Dynamic%20Website%20plan%20and%20get%20an%20exact%20quote." target="_blank" class="w-full text-center bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold py-3 rounded-xl hover:bg-cyan-500 hover:text-white transition-all duration-300 relative z-10">Request Exact Quote</a>
-                </div>
-
-                <!-- Pricing Card 2: CRM Portal (POPULAR) -->
-                <div class="relative bg-gradient-to-b from-blue-600 via-indigo-700 to-purple-800 rounded-3xl p-8 border border-blue-400 border-b-[12px] border-b-indigo-950 shadow-[0_20px_50px_rgba(59,130,246,0.4)] transform md:-translate-y-8 md:scale-105 transition-all duration-500 hover:-translate-y-10 hover:shadow-[0_0_60px_rgba(99,102,241,0.7)] group z-20 flex flex-col h-full">
-                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 text-dark font-black px-6 py-1.5 rounded-full text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(251,191,36,0.8)] animate-pulse border border-yellow-200">Most Popular</div>
-                    <div class="text-center mb-8 mt-2 relative z-10">
-                        <div class="w-20 h-20 mx-auto bg-white/20 text-white rounded-3xl flex items-center justify-center text-4xl mb-4 shadow-[0_0_20px_rgba(255,255,255,0.2)] border border-white/40 group-hover:rotate-12 transition-transform duration-500 backdrop-blur-sm"><i class="fa-solid fa-users-gear"></i></div>
-                        <h3 class="text-3xl font-black text-white mb-2 drop-shadow-md">Real Estate CRM</h3>
-                        <p class="text-blue-100 text-sm h-10 font-medium">Advanced lead & staff management system.</p>
-                        <div class="mt-6 flex justify-center items-baseline gap-1">
-                            <span class="text-6xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">$899</span>
-                            <span class="text-blue-200 font-bold">/starts</span>
-                        </div>
-                    </div>
-                    <div class="flex-grow mb-8 relative z-10">
-                        <ul class="space-y-5">
-                            <li class="flex items-center text-white font-medium"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-xl shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Everything in Website plan</span></li>
-                            <li class="flex items-center text-white font-medium"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-xl shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Lead Assignment & Tracking</span></li>
-                            <li class="flex items-center text-white font-medium"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-xl shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Call & Email Integration API</span></li>
-                            <li class="flex items-center text-white font-medium"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-xl shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Agent Performance Dashboard</span></li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/917340337074?text=Hello,%20I%20want%20to%20discuss%20the%20Real%20Estate%20CRM%20plan%20and%20get%20an%20exact%20quote." target="_blank" class="w-full text-center bg-white text-indigo-700 font-black py-4 rounded-xl hover:bg-yellow-400 hover:text-dark transition-colors shadow-[0_10px_20px_rgba(0,0,0,0.3)] text-lg relative z-10">Request Exact Quote</a>
-                </div>
-
-                <!-- Pricing Card 3: Mobile App -->
-                <div class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 border-b-[8px] border-b-pink-700 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_40px_rgba(219,39,119,0.5)] group flex flex-col h-full">
-                    <div class="absolute -top-6 -left-6 w-20 h-20 bg-pink-500 rounded-full filter blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
-                    <div class="text-center mb-8 relative z-10">
-                        <div class="w-16 h-16 mx-auto bg-pink-500/20 text-pink-400 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-pink-500/30 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(219,39,119,0.2)]"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Mobile Application</h3>
-                        <p class="text-gray-400 text-sm h-10">Native Apps for Android & iOS platforms.</p>
-                        <div class="mt-6 flex justify-center items-baseline gap-1">
-                            <span class="text-5xl font-black text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">$1,499</span>
-                            <span class="text-gray-400 font-medium">/starts</span>
-                        </div>
-                    </div>
-                    <div class="flex-grow mb-8 relative z-10">
-                        <ul class="space-y-4">
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-lg shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Android & iOS Applications</span></li>
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-lg shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Secure Payment Gateway</span></li>
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-lg shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Real-time Push Notifications</span></li>
-                            <li class="flex items-center text-gray-300"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-lg shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Geo-Location & Map Search</span></li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/917340337074?text=Hello,%20I%20want%20to%20discuss%20the%20Mobile%20App%20plan%20and%20get%20an%20exact%20quote." target="_blank" class="w-full text-center bg-transparent border-2 border-pink-500 text-pink-400 font-bold py-3 rounded-xl hover:bg-pink-500 hover:text-white transition-all duration-300 relative z-10">Request Exact Quote</a>
-                </div>
-            </div>
-            
-            <!-- Disclaimer Box -->
-            <div class="mt-12 bg-white/5 border border-cyan-500/30 rounded-xl p-5 md:p-6 max-w-4xl mx-auto text-left sm:text-center flex flex-col sm:flex-row items-center gap-5 shadow-lg backdrop-blur-sm">
-                <i class="fa-solid fa-circle-info text-cyan-400 text-3xl flex-shrink-0 animate-pulse"></i>
-                <p class="text-gray-300 text-sm leading-relaxed text-left">
-                    <strong class="text-white tracking-wide uppercase text-xs block mb-1">Important Pricing Notice:</strong> 
-                    The prices mentioned above are strictly baseline examples. Every website and software we build is <span class="text-cyan-300 font-bold">100% Custom Designed</span> from scratch for your brand. Because of this, the final confirmed charges will depend entirely on your specific design preferences, logic complexity, and features. Please <a href="https://wa.me/917340337074?text=Hello,%20I%20would%20like%20to%20discuss%20my%20custom%20software%20requirement%20and%20get%20an%20exact%20quote." target="_blank" class="text-green-400 hover:text-green-300 font-bold underline transition">contact our team on WhatsApp</a> to consult with an expert and get an exact confirmed quote.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-blue-950 rounded-3xl overflow-hidden shadow-2xl">
-                <div class="grid grid-cols-1 lg:grid-cols-2">
-                    <div class="p-10 md:p-16 text-white bg-gradient-to-br from-blue-950 to-blue-900 border-r border-blue-800">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Your Digital Real Estate Empire.</h2>
-                        <p class="text-blue-200 mb-8 text-lg">Contact us today to discuss your software requirements. Our experts will design a custom technology roadmap for your business.</p>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center"><i class="fa-solid fa-phone text-xl"></i></div>
-                                <div><p class="text-sm text-blue-200">Call Us</p><p class="font-bold text-lg">+91 7340337074</p></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center"><i class="fa-solid fa-envelope text-xl"></i></div>
-                                <div><p class="text-sm text-blue-200">Email Us</p><p class="font-bold text-lg">contact@restech.in</p></div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 bg-white/10 rounded-full flex-shrink-0 flex items-center justify-center"><i class="fa-solid fa-building text-xl"></i></div>
-                                <div><p class="text-sm text-blue-200">Headquarters</p><p class="font-bold text-lg leading-tight">Bengaluru, Karnataka<br><span class="text-sm font-normal text-blue-100">India</span></p></div>
-                            </div>
-                        </div>
-
-                        <!-- Branches & Services Grid -->
-                        <div class="mt-8 pt-6 border-t border-blue-800">
-                            <p class="text-sm text-blue-200 mb-4 flex items-center gap-2"><i class="fa-solid fa-map-location-dot"></i> Regional Branches (India)</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Hyderabad</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Pune</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Mumbai</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Gurugram</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Chennai</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Noida</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Jaipur</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Ahmedabad</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Kolkata</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Chandigarh</span>
-                            </div>
-                        </div>
-                        <div class="mt-6 pt-6 border-t border-blue-800">
-                            <p class="text-sm text-blue-200 mb-4 flex items-center gap-2"><i class="fa-solid fa-globe"></i> Services & Developers Available In</p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">USA</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">UK</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Canada</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Australia</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Singapore</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Germany</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">UAE</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">Japan</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">China</span>
-                                <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold hover:bg-white/20">France</span>
-                            </div>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#services" class="bg-secondary text-white px-8 py-3.5 rounded-full font-semibold hover:bg-blue-600 transition shadow-lg shadow-blue-500/40 flex items-center gap-2">
+                                Explore Solutions <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a href="#offer" class="bg-transparent border border-gray-400 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-white/10 transition-all">
+                                View Special Offers
+                            </a>
                         </div>
                     </div>
                     
-                    <!-- Direct Connect Buttons -->
-                    <div class="p-10 md:p-16 bg-white relative flex flex-col items-center justify-center text-center overflow-hidden">
-                        <!-- Subtle Background Glow Elements -->
-                        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse pointer-events-none"></div>
-                        <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse pointer-events-none" style="animation-delay: 2s;"></div>
-
-                        <div class="relative z-10 w-full max-w-sm flex flex-col items-center">
-                            <!-- Premium Badge -->
-                            <span class="bg-blue-50 text-blue-700 text-[10px] sm:text-xs font-black uppercase tracking-widest py-1.5 px-4 rounded-full mb-6 shadow-sm border border-blue-200 flex items-center gap-1.5"><i class="fa-solid fa-bolt text-yellow-500"></i> Fast Track Service</span>
-
-                            <h3 class="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Connect <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Instantly</span></h3>
-                            <p class="text-gray-500 mb-10 text-sm md:text-base font-medium leading-relaxed">Skip the long forms. Get an immediate response from our senior real estate tech experts.</p>
-                            
-                            <div class="w-full space-y-4">
-                                <!-- WhatsApp Button -->
-                                <a href="https://wa.me/917340337074?text=Hello,%20I%20am%20interested%20in%20your%20IT%20services." target="_blank" class="w-full relative group flex items-center justify-center gap-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-black py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_10px_25px_rgba(37,211,102,0.4)] hover:-translate-y-1 overflow-hidden border border-[#20bd5a]">
-                                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-                                    <i class="fa-brands fa-whatsapp text-2xl relative z-10 group-hover:animate-wiggle"></i>
-                                    <span class="relative z-10 text-lg">Chat on WhatsApp</span>
-                                </a>
-
-                                <!-- Direct Call Button -->
-                                <a href="tel:+917340337074" class="w-full relative group flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_10px_25px_rgba(37,99,235,0.4)] hover:-translate-y-1 overflow-hidden border border-blue-500">
-                                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-                                    <i class="fa-solid fa-phone-volume text-xl relative z-10 group-hover:animate-wiggle"></i>
-                                    <span class="relative z-10 text-lg">Call +91 7340337074</span>
-                                </a>
-                                
-                                <!-- Email Button -->
-                                <a href="mailto:contact@restech.in" class="w-full relative group flex items-center justify-center gap-3 bg-gray-50 text-gray-800 font-bold py-4 rounded-2xl transition-all duration-300 hover:bg-gray-100 hover:shadow-md border border-gray-200">
-                                    <i class="fa-solid fa-envelope text-gray-500 text-xl group-hover:text-primary transition-colors"></i>
-                                    <span>contact@restech.in</span>
-                                </a>
+                    <!-- Integrations Floating Badges -->
+                    <div class="hidden lg:block relative h-[380px]">
+                        <div class="absolute top-4 left-10 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce" style="animation-duration: 4s;">
+                            <i class="fa-brands fa-whatsapp text-green-500 text-3xl"></i>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">WhatsApp API</p>
+                                <p class="text-xs text-gray-500">Automated Leads</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce" style="animation-duration: 4.5s; animation-delay: 1s;">
+                            <i class="fa-solid fa-credit-card text-purple-500 text-3xl"></i>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">Payment Gateway</p>
+                                <p class="text-xs text-gray-500">Razorpay, PayPal</p>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-20 bg-white p-4 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">
+                            <i class="fa-solid fa-headset text-blue-500 text-3xl"></i>
+                            <div>
+                                <p class="text-sm font-bold text-gray-800">Call Integration</p>
+                                <p class="text-xs text-gray-500">Cloud Telephony</p>
                             </div>
                         </div>
                     </div>
@@ -772,13 +229,527 @@
             </div>
         </section>
 
-      <!-- Technologies Section (Restored & Moved to Home Page) -->
-        <section id="technologies-page" class="pt-20 pb-24 bg-white border-t border-gray-100 relative z-20">
+        <!-- Seamless Integrations Strip -->
+        <div class="bg-white py-6 md:py-8 border-b border-gray-200 overflow-x-hidden relative">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-6">Our Seamless Third-Party Integrations</p>
+                <div class="w-full overflow-hidden mask-image-fade">
+                    <div class="flex animate-scroll-x gap-16 items-center">
+                        <!-- Group 1 -->
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-3xl" style="color: #25D366;"></i><span class="font-bold text-gray-800 text-base">WhatsApp Official</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-phone-volume text-2xl text-blue-500"></i><span class="font-bold text-gray-800 text-base">Cloud Telephony</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-stripe text-5xl" style="color: #635BFF;"></i></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-envelope-circle-check text-2xl text-red-500"></i><span class="font-bold text-gray-800 text-base">Email SMTP Auto</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-map-location-dot text-2xl text-emerald-500"></i><span class="font-bold text-gray-800 text-base">Google Maps API</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-paypal text-3xl text-blue-700"></i><span class="font-bold text-gray-800 text-base">PayPal Business</span></div>
+                        
+                        <!-- Group 2 (Duplicate for continuous loop) -->
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-3xl" style="color: #25D366;"></i><span class="font-bold text-gray-800 text-base">WhatsApp Official</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-phone-volume text-2xl text-blue-500"></i><span class="font-bold text-gray-800 text-base">Cloud Telephony</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-stripe text-5xl" style="color: #635BFF;"></i></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-envelope-circle-check text-2xl text-red-500"></i><span class="font-bold text-gray-800 text-base">Email SMTP Auto</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-map-location-dot text-2xl text-emerald-500"></i><span class="font-bold text-gray-800 text-base">Google Maps API</span></div>
+                        <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-paypal text-3xl text-blue-700"></i><span class="font-bold text-gray-800 text-base">PayPal Business</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Offer Section ($30 Package) - UPGRADED DESIGN -->
+        <section id="offer" class="py-20 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black border-y border-slate-800">
+            <!-- Animated Glowing Orbs -->
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500/15 rounded-full blur-[100px] animate-pulse"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-red-500/15 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
+            
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="bg-white/5 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-14 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden group">
+                    <!-- Shimmer Effect -->
+                    <div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:animate-[sweep-shine_3s_infinite]"></div>
+                    
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs md:text-sm font-black px-6 py-2 rounded-bl-3xl uppercase tracking-widest shadow-lg border-b border-l border-red-700 z-20">
+                        <i class="fa-solid fa-fire animate-pulse mr-1"></i> Mega Offer
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight relative z-10 leading-tight">
+                        Launch Your Real Estate Business Online <br class="hidden lg:block"> Starting At Just <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] text-5xl md:text-7xl align-middle">$30</span>
+                    </h2>
+                    
+                    <p class="text-base md:text-lg text-gray-400 mb-10 max-w-4xl mx-auto leading-relaxed relative z-10">
+                        Don't lose clients to competitors. We will build a complete, high-converting Property Dealer Website for you. List properties, capture verified leads, and build a powerful digital brand instantly!
+                    </p>
+
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-4xl mx-auto text-left relative z-10">
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
+                            <i class="fa-solid fa-code text-yellow-400 mt-1"></i>
+                            <div><h4 class="text-white font-bold text-sm">Premium UI</h4><p class="text-xs text-gray-500">Custom Design</p></div>
+                        </div>
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
+                            <i class="fa-brands fa-whatsapp text-green-400 mt-1"></i>
+                            <div><h4 class="text-white font-bold text-sm">WhatsApp</h4><p class="text-xs text-gray-500">Direct Chat API</p></div>
+                        </div>
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
+                            <i class="fa-solid fa-bolt text-blue-400 mt-1"></i>
+                            <div><h4 class="text-white font-bold text-sm">Fast Loading</h4><p class="text-xs text-gray-500">Global Servers</p></div>
+                        </div>
+                        <div class="bg-black/20 border border-white/5 p-4 rounded-2xl flex items-start gap-3 hover:bg-white/10 transition">
+                            <i class="fa-solid fa-headset text-purple-400 mt-1"></i>
+                            <div><h4 class="text-white font-bold text-sm">Free Support</h4><p class="text-xs text-gray-500">Technical Help</p></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6 relative z-10">
+                        <div class="bg-black/40 border border-white/10 px-8 py-4 rounded-2xl flex items-center gap-4 shadow-xl">
+                            <div class="flex flex-col items-end">
+                                <span class="text-gray-500 line-through text-lg md:text-xl font-bold leading-none">$299</span>
+                                <span class="text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-2 py-0.5 rounded mt-1">90% OFF</span>
+                            </div>
+                            <div class="h-12 w-px bg-white/20"></div>
+                            <span class="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 drop-shadow-md">$30</span>
+                        </div>
+                        <a href="https://wa.me/917340337074?text=Hello,%20I%20am%20interested%20in%20the%20$30%20Property%20Dealer%20Website%20offer." target="_blank" class="bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-8 md:px-10 py-5 rounded-2xl font-black hover:scale-105 transition-all duration-300 shadow-[0_0_30px_rgba(37,211,102,0.4)] text-lg md:text-xl flex items-center gap-3 border border-green-400">
+                            Claim $30 Offer <i class="fa-brands fa-whatsapp text-2xl animate-wiggle"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-8 font-bold tracking-widest uppercase relative z-10">* Limited to the first 50 clients this month. No hidden charges.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white relative overflow-hidden">
+            <!-- Decorative bg -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full filter blur-[80px] opacity-60"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full filter blur-[80px] opacity-60"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-blue-100 text-primary font-bold text-sm mb-3 border border-blue-200 shadow-sm"><i class="fa-solid fa-building-user"></i> Corporate Profile</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-2">About <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Restech</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto font-medium">Driving the global digital transformation of the real estate industry through innovative, secure, and scalable PropTech solutions.</p>
+                </div>
+                
+                <div class="max-w-5xl mx-auto bg-gradient-to-br from-gray-50 to-white p-8 md:p-12 rounded-[2.5rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative overflow-hidden mb-12">
+                    <div class="absolute top-0 left-0 w-2.5 h-full bg-gradient-to-b from-primary to-secondary"></div>
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed font-medium">
+                        <p>Welcome to <strong class="text-primary font-black">Real Estate Software Technology Private Limited (Restech)</strong>, a pioneering force in the global PropTech industry. Headquartered in Bengaluru, India, we specialize in delivering enterprise-grade digital infrastructure tailored exclusively for real estate businesses globally.</p>
+                        <p>Our expert engineering team builds comprehensive digital ecosystems—including dynamic property portals, custom CRMs, intelligent mobile applications, and lead-routing API integrations—that empower brokers, agencies, and builders to scale seamlessly.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Mission -->
+                    <div class="bg-blue-950 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 text-9xl text-white/5 group-hover:scale-110 transition-transform"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-md border border-white/20"><i class="fa-solid fa-rocket text-blue-300"></i></div>
+                        <h3 class="text-2xl font-black mb-3">Our Mission</h3>
+                        <p class="text-blue-100/80 leading-relaxed">Our mission is to make modern digital technology accessible and affordable for every real estate business, helping them generate more leads, automate operations, and build stronger trust online.</p>
+                    </div>
+                    <!-- Vision -->
+                    <div class="bg-blue-950 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 text-9xl text-white/5 group-hover:scale-110 transition-transform"><i class="fa-solid fa-eye"></i></div>
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-md border border-white/20"><i class="fa-solid fa-globe text-cyan-300"></i></div>
+                        <h3 class="text-2xl font-black mb-3">Our Vision</h3>
+                        <p class="text-blue-100/80 leading-relaxed">To become the world's most trusted technology partner for the real estate sector, creating flawless software architectures that connect buyers, sellers, and agents globally.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Restech AI Google-like Search Bar -->
+                <div class="max-w-3xl mx-auto mb-20 relative z-20">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center gap-2 text-primary font-black text-xl tracking-tight mb-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-accent"></i> Restech AI
+                        </div>
+                        <p class="text-gray-500 text-sm">Ask anything about real estate software, CRM, or our services.</p>
+                    </div>
+                    
+                    <form id="restech-ai-form" class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-robot text-gray-400 group-focus-within:text-cyan-500 transition-colors text-lg"></i>
+                        </div>
+                        <input type="text" id="ai-search-input" class="block w-full pl-14 pr-16 py-4.5 bg-white border border-gray-200 rounded-full text-lg shadow-[0_5px_15px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.06)] focus:ring-2 focus:ring-primary/20 focus:border-secondary transition-all outline-none text-gray-800" placeholder="Ask Restech AI a question...">
+                        <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full hover:bg-secondary transition-colors z-10 cursor-pointer shadow-md">
+                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        </button>
+                    </form>
+                    
+                    <!-- Quick suggestions -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 mt-4">
+                        <span class="text-xs text-gray-400 font-bold">Suggested:</span>
+                        <button onclick="fillAISearch('How can CRM improve agent productivity?')" class="text-xs bg-white border border-gray-200 hover:border-secondary hover:text-secondary px-3 py-1 rounded-full transition text-gray-600 font-medium">How CRM improves productivity?</button>
+                        <button onclick="fillAISearch('What is included in the $30 package?')" class="text-xs bg-white border border-gray-200 hover:border-secondary hover:text-secondary px-3 py-1 rounded-full transition text-gray-600 font-medium">What is in the $30 package?</button>
+                        <button onclick="fillAISearch('How do you route WhatsApp leads?')" class="text-xs bg-white border border-gray-200 hover:border-secondary hover:text-secondary px-3 py-1 rounded-full transition text-gray-600 font-medium">WhatsApp lead routing</button>
+                    </div>
+                    
+                    <!-- AI Results Box -->
+                    <div id="ai-results-box" class="hidden mt-6 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden text-left p-6 md:p-8 relative">
+                        <div id="ai-loading" class="hidden flex flex-col items-center justify-center gap-3 py-6">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 bg-primary rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+                                <div class="w-3 h-3 bg-secondary rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                                <div class="w-3 h-3 bg-accent rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                            </div>
+                            <span class="text-gray-500 font-medium mt-2">Restech AI is drafting solution...</span>
+                        </div>
+                        <div id="ai-response-content" class="text-gray-700 leading-relaxed text-base md:text-lg prose max-w-none"></div>
+                        <button id="ai-close-btn" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:bg-red-50 hover:text-red-500 transition-colors">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Services Grid -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-base text-secondary font-semibold tracking-wide uppercase">Our Services</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Enterprise Software Solutions
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                        We build end-to-end digital infrastructure for the global real estate market.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Items -->
+                    <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/10 border border-blue-800">
+                        <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-globe text-2xl text-white"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Real Estate Website</h3>
+                        <p class="text-blue-100 mb-4">Complete property listing websites with advanced search, filtering, map view, and broker dashboards. High-end UI/UX designs.</p>
+                    </div>
+                    <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/10 border border-blue-800">
+                        <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-users-gear text-2xl text-white"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Custom CRM Software</h3>
+                        <p class="text-blue-100 mb-4">Manage leads, track sales pipelines, automate follow-ups, and assign tasks to agents with our tailor-made systems.</p>
+                    </div>
+                    <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/10 border border-blue-800">
+                        <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-mobile-screen-button text-2xl text-white"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Mobile Applications</h3>
+                        <p class="text-blue-100 mb-4">Cross-platform mobile apps (Android & iOS) for property buyers, sellers, and agents to connect and transact on the go.</p>
+                    </div>
+                    <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/10 border border-blue-800">
+                        <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-plug-circle-bolt text-2xl text-white"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">API & Integrations</h3>
+                        <p class="text-blue-100 mb-4">We connect your software with external tools. Call routing, WhatsApp auto-replies, and secure payment gateways.</p>
+                    </div>
+                    <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/10 border border-blue-800">
+                        <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-code text-2xl text-white"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Custom Development</h3>
+                        <p class="text-blue-100 mb-4">Need something unique? We build bespoke software architectures tailored exactly to your unique business operational logic.</p>
+                    </div>
+                    <div class="rounded-2xl p-8 hover-card bg-gradient-to-br from-primary to-blue-900 text-white shadow-xl shadow-blue-900/10 border border-blue-800">
+                        <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 border border-white/10"><i class="fa-solid fa-headset text-2xl text-white"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">IT Support</h3>
+                        <p class="text-blue-100 mb-4">We don't just build; we guide. Get 24/7 technical support, server maintenance, and strategic IT consulting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Stats Strip -->
+        <section class="py-4 bg-gray-50 relative z-20">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="bg-white rounded-3xl p-4 md:p-6 shadow-md border border-gray-100 flex flex-col md:flex-row justify-between items-center relative overflow-hidden gap-6">
+                    <!-- Subtle Colorful Gradient Background -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-pink-50/50 opacity-70 pointer-events-none"></div>
+                    
+                    <!-- Stat 1 -->
+                    <div class="flex items-center gap-4 relative z-10 w-full md:w-1/3 justify-center md:border-r border-gray-100 py-2">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 text-white flex items-center justify-center text-xl shadow-sm shrink-0">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <div class="text-left flex flex-col justify-center">
+                            <div class="text-2xl font-black text-gray-800 leading-none">50+</div>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">In-House Experts</p>
+                        </div>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="flex items-center gap-4 relative z-10 w-full md:w-1/3 justify-center md:border-r border-gray-100 py-2">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-400 to-pink-500 text-white flex items-center justify-center text-xl shadow-sm shrink-0">
+                            <i class="fa-solid fa-piggy-bank"></i>
+                        </div>
+                        <div class="text-left flex flex-col justify-center">
+                            <div class="text-2xl font-black text-gray-800 leading-none">80%</div>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">Saving On Cost</p>
+                        </div>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="flex items-center gap-4 relative z-10 w-full md:w-1/3 justify-center py-2">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-500 text-white flex items-center justify-center text-xl shadow-sm shrink-0">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div class="text-left flex flex-col justify-center">
+                            <div class="text-2xl font-black text-gray-800 leading-none">3000+</div>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-wider mt-1">Projects Delivered</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Demos Portfolio Section -->
+        <section id="demo" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-blue-100 text-primary font-bold text-sm mb-3 border border-blue-200 shadow-sm">Interactive Sandbox</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
+                        Explore Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Live Software Demos</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg">
+                        Interact directly with our prototype interfaces below to preview how our systems optimize user journeys and operations.
+                    </p>
+                </div>
+
+                <!-- Interactive Demo Component with Custom Tab System -->
+                <div class="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-200/80 shadow-lg max-w-6xl mx-auto">
+                    <!-- Tab Headers -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 md:gap-4 mb-8">
+                        <button onclick="switchSandboxTab('portal-demo')" id="btn-portal-demo" class="sandbox-tab-btn flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-full shadow-md transition-all text-sm md:text-base">
+                            <i class="fa-solid fa-window-restore"></i> Property Portal
+                        </button>
+                        <button onclick="switchSandboxTab('crm-demo')" id="btn-crm-demo" class="sandbox-tab-btn flex items-center gap-2 bg-white text-gray-600 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition-all text-sm md:text-base border border-gray-200">
+                            <i class="fa-solid fa-users-viewfinder"></i> Agent CRM Dashboard
+                        </button>
+                        <button onclick="switchSandboxTab('calculator-demo')" id="btn-calculator-demo" class="sandbox-tab-btn flex items-center gap-2 bg-white text-gray-600 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition-all text-sm md:text-base border border-gray-200">
+                            <i class="fa-solid fa-calculator"></i> EMI Estimator
+                        </button>
+                    </div>
+
+                    <!-- Tab Sandbox 1: Property Portal Demo -->
+                    <div id="sandbox-portal-demo" class="sandbox-content block">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                            <!-- Filters & Actions -->
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
+                                <h4 class="font-black text-gray-900 text-lg mb-4 flex items-center gap-2"><i class="fa-solid fa-sliders text-primary"></i> Live Filters</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Location</label>
+                                        <select id="portal-demo-loc" onchange="filterPortalDemo()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-primary">
+                                            <option value="all">All Locations</option>
+                                            <option value="bengaluru">Bengaluru</option>
+                                            <option value="mumbai">Mumbai</option>
+                                            <option value="dubai">Dubai</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Property Type</label>
+                                        <select id="portal-demo-type" onchange="filterPortalDemo()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-primary">
+                                            <option value="all">All Types</option>
+                                            <option value="apartment">Apartment</option>
+                                            <option value="villa">Luxury Villa</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Sort By Price</label>
+                                        <select id="portal-demo-sort" onchange="filterPortalDemo()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm outline-none focus:border-primary">
+                                            <option value="low">Low to High</option>
+                                            <option value="high">High to Low</option>
+                                        </select>
+                                    </div>
+                                    <div class="pt-4 border-t border-gray-100">
+                                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 text-xs text-primary leading-relaxed font-semibold">
+                                            <i class="fa-solid fa-lightbulb"></i> This is a simulated high-speed React-style filtering core. Your actual site loads millions of properties in under 0.2s!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Grid -->
+                            <div class="lg:col-span-2 space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-bold text-gray-500 text-sm">Interactive Live View</span>
+                                    <span class="text-xs bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-circle animate-pulse"></i> REST API Active</span>
+                                </div>
+                                <div id="portal-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Sandbox 2: Agent CRM Dashboard Demo -->
+                    <div id="sandbox-crm-demo" class="sandbox-content hidden">
+                        <div class="bg-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-inner">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-6 border-b border-slate-800">
+                                <div>
+                                    <h4 class="font-bold text-xl flex items-center gap-2 text-cyan-400"><i class="fa-solid fa-cubes"></i> Restech Lead CRM v4.1</h4>
+                                    <p class="text-xs text-slate-400 font-medium">Auto Routing & Real-time Client Management Simulator</p>
+                                </div>
+                                <button onclick="simulateNewLead()" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-4 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md hover:from-cyan-400 transition-all">
+                                    <i class="fa-solid fa-user-plus"></i> Simulate Incoming Lead
+                                </button>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Total Leads Managed</span>
+                                    <div id="crm-stat-total" class="text-3xl font-black text-white mt-1">42</div>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Active Conversions</span>
+                                    <div id="crm-stat-active" class="text-3xl font-black text-green-400 mt-1">8</div>
+                                </div>
+                                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                                    <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Assigned Agents</span>
+                                    <div class="text-3xl font-black text-cyan-400 mt-1">14</div>
+                                </div>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm whitespace-nowrap">
+                                    <thead>
+                                        <tr class="text-slate-500 border-b border-slate-800 text-xs font-bold uppercase tracking-wider">
+                                            <th class="pb-3 px-2">Client Name</th>
+                                            <th class="pb-3 px-2">Requested Property</th>
+                                            <th class="pb-3 px-2">Status</th>
+                                            <th class="pb-3 px-2">WhatsApp Direct</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="crm-table-body" class="divide-y divide-slate-800">
+                                        <!-- Populated via JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Sandbox 3: Mortgage Calculator -->
+                    <div id="sandbox-calculator-demo" class="sandbox-content hidden">
+                        <div class="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm max-w-4xl mx-auto">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                <div class="space-y-5">
+                                    <h4 class="font-black text-gray-900 text-xl mb-2 flex items-center gap-2"><i class="fa-solid fa-coins text-accent"></i> Mortgage Estimator</h4>
+                                    <div>
+                                        <label class="block text-sm font-bold text-gray-600 mb-2">Property Value ($)</label>
+                                        <input type="number" id="calc-val" value="350000" oninput="calculateEMI()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-bold text-gray-600 mb-2">Down Payment ($)</label>
+                                        <input type="number" id="calc-down" value="70000" oninput="calculateEMI()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-bold text-gray-600 mb-2">Interest Rate (%)</label>
+                                            <input type="number" id="calc-rate" value="6.5" step="0.1" oninput="calculateEMI()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-bold text-gray-600 mb-2">Loan Term (Years)</label>
+                                            <input type="number" id="calc-term" value="30" oninput="calculateEMI()" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-blue-950 p-6 md:p-8 rounded-2xl text-white text-center shadow-lg relative overflow-hidden flex flex-col items-center justify-center">
+                                    <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-2">Estimated Monthly Payment</span>
+                                    <div id="calc-result" class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-300 drop-shadow-md">$1,769</div>
+                                    <p class="text-blue-200/70 text-xs mt-4 leading-relaxed max-w-xs">
+                                        Empower buyers with instant interactive calculations right inside your portals to drive lead conversions!
+                                    </p>
+                                    <div class="mt-6 w-full">
+                                        <a href="#contact" class="inline-block w-full bg-gradient-to-r from-secondary to-blue-600 text-white font-black py-3 rounded-xl hover:opacity-90 transition shadow-md">Build Interactive Calculator</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrations Section -->
+        <section id="integrations-page" class="py-20 bg-slate-900 relative overflow-hidden border-t border-slate-800">
+            <!-- Glow background -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="inline-block py-1.5 px-4 rounded-full bg-white/10 text-cyan-400 font-bold text-sm mb-3 border border-white/20 shadow-sm"><i class="fa-solid fa-network-wired"></i> Seamless Connect</span>
+                    <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-4">
+                        Powerful PropTech <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Integrations Hub</span>
+                    </h2>
+                    <p class="text-slate-400 text-lg">
+                        We connect your property system directly to essential third-party APIs for automation, payments, maps, and call systems.
+                    </p>
+                </div>
+
+                <!-- Interactive Integration Sandbox -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center bg-white/5 backdrop-blur-md border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
+                    <div class="text-left">
+                        <h3 class="text-2xl md:text-3xl font-black text-white mb-6">How Integrations Automate Sales Flow</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Step 1 -->
+                            <div class="flex gap-4 items-start cursor-pointer group" onclick="switchIntegrationSimulation(1)">
+                                <div id="int-step-badge-1" class="w-10 h-10 rounded-full bg-cyan-500 text-slate-900 font-black flex items-center justify-center shrink-0 transition-all border-2 border-cyan-400">1</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base group-hover:text-cyan-400 transition-colors">Client Submits Request</h4>
+                                    <p class="text-slate-400 text-sm mt-1">Client inputs details on portal or WhatsApp; webhook transmits payloads immediately.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="flex gap-4 items-start cursor-pointer group" onclick="switchIntegrationSimulation(2)">
+                                <div id="int-step-badge-2" class="w-10 h-10 rounded-full bg-slate-800 text-slate-400 font-black flex items-center justify-center shrink-0 transition-all border border-slate-700">2</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base group-hover:text-cyan-400 transition-colors">Instant CRM Assignment</h4>
+                                    <p class="text-slate-400 text-sm mt-1">CRM processes, routes based on location rules, and assigns dynamically to matching agents.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="flex gap-4 items-start cursor-pointer group" onclick="switchIntegrationSimulation(3)">
+                                <div id="int-step-badge-3" class="w-10 h-10 rounded-full bg-slate-800 text-slate-400 font-black flex items-center justify-center shrink-0 transition-all border border-slate-700">3</div>
+                                <div>
+                                    <h4 class="font-bold text-white text-base group-hover:text-cyan-400 transition-colors">Direct WhatsApp / SMS Ping</h4>
+                                    <p class="text-slate-400 text-sm mt-1">Twilio or standard WhatsApp API auto-replies to the client and fires a high-priority push to the agent.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integration Simulation Console visualizer -->
+                    <div class="bg-slate-950 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-2xl relative">
+                        <div class="absolute top-4 right-4 flex gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        </div>
+                        <h4 class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-4">Integration Webhook Payloads</h4>
+                        
+                        <div class="bg-slate-900 p-4 rounded-xl text-xs font-mono text-cyan-300 min-h-[220px] overflow-y-auto leading-relaxed border border-slate-800" id="integration-payload-box">
+                            <!-- Preloaded step 1 -->
+                            {
+  "event": "form_submission",
+  "source": "Property Portal",
+  "client": {
+    "name": "Alex Johnson",
+    "phone": "+1 (555) 234-5678",
+    "email": "alex@johnson.com"
+  },
+  "interest": {
+    "property_id": "RES-8923",
+    "budget": "$500,000"
+  }
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section -->
+        <section id="technologies-page" class="py-20 bg-white border-t border-gray-100 relative z-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary font-semibold text-sm mb-4 border border-blue-200">Enterprise-Grade Technologie</span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-dark mb-4">Built Using <span class="gradient-text">World-Class Engineering Technologies</span></h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">We deploy a massive ecosystem of industry-leading programming languages, modern frameworks, and cloud infrastructure. From lightning-fast property searches to military-grade data security, our stack handles millions of global users effortlessly..</p>
+                    <span class="inline-block py-1 px-3 rounded-full bg-blue-100 text-primary font-semibold text-sm mb-4 border border-blue-200">Enterprise-Grade Technologies</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-dark mb-4">Built Using <span class="gradient-text">World-Class Engineering</span></h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">We deploy a massive ecosystem of industry-leading programming languages, modern frameworks, and cloud infrastructure. From lightning-fast property searches to military-grade data security, our stack handles millions of global users effortlessly.</p>
                 </div>
 
                 <div class="space-y-16">
@@ -925,7 +896,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -996,16 +966,262 @@
             </div>
         </section>
 
+        <!-- NEW ISOLATED MEGA OFFER SECTION: $30 Website -->
+        <section class="py-20 relative bg-gray-100 border-t border-gray-300" id="mega-offer" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+                <!-- Glowing Background Effect -->
+                <div class="absolute -inset-2 bg-gradient-to-r from-yellow-400 via-accent to-orange-500 rounded-[2.5rem] blur-xl opacity-20 animate-pulse pointer-events-none"></div>
+                
+                <div class="relative bg-white border-2 border-accent/30 rounded-3xl p-8 md:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.08)] overflow-hidden">
+                    <!-- Golden Ribbon / Banner Tag -->
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-[10px] md:text-xs font-black px-6 py-2 rounded-bl-2xl shadow-md uppercase tracking-widest border-b border-l border-red-700 max-w-xs md:max-w-none text-center">
+                        Special Offer for Brokers & Builders
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row items-center gap-10 mt-6 lg:mt-0">
+                        <!-- Left: Content & Features -->
+                        <div class="flex-1 text-left">
+                            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
+                                Single Page Property <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-600">Business Website</span>
+                            </h2>
+                            
+                            <p class="text-lg text-gray-600 font-medium mb-6 leading-relaxed">
+                                A $30 investment is like the cost of a regular coffee meeting, but here it sets up your entire Real Estate business online! Why delay your digital growth? Get a fully functioning, professional website crafted exclusively for you.
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-6">
+                                <!-- Feature Points -->
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-robot"></i></div>
+                                    <div><h4 class="font-bold text-gray-900 text-sm">Trained AI Assistant</h4><p class="text-xs text-gray-500">A human-like smart chatbot fed with your company data to market your business & handle clients 24/7.</p></div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-brands fa-whatsapp text-lg"></i></div>
+                                    <div><h4 class="font-bold text-gray-900 text-sm">WhatsApp & Call Buttons</h4><p class="text-xs text-gray-500">Directly integrated floating buttons so clients can connect with your agents instantly.</p></div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-bullhorn"></i></div>
+                                    <div><h4 class="font-bold text-gray-900 text-sm">Free Digital Marketing</h4><p class="text-xs text-gray-500">Google Listing setup, Instagram account setup, customized video reels, and social media posting.</p></div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 mt-0.5"><i class="fa-solid fa-palette"></i></div>
+                                    <div><h4 class="font-bold text-gray-900 text-sm">100% Custom Design</h4><p class="text-xs text-gray-500">Live preview sessions with our team. We'll update the layout exactly as you dictate until it's perfect.</p></div>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm font-bold text-green-600 bg-green-50 px-4 py-2 rounded-lg inline-block border border-green-200">
+                                <i class="fa-solid fa-circle-check"></i> No extra charges. Everything listed above is included in the $30 package!
+                            </p>
+                        </div>
+
+                        <!-- Right: Pricing & CTA -->
+                        <div class="shrink-0 w-full lg:w-72 bg-gradient-to-b from-dark to-blue-900 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden border-2 border-blue-800">
+                            <!-- BG Decor -->
+                            <div class="absolute -top-10 -right-10 w-32 h-32 bg-accent rounded-full filter blur-[50px] opacity-40"></div>
+                            
+                            <p class="text-blue-200 text-sm font-bold uppercase tracking-widest mb-2 relative z-10">Total Investment</p>
+                            <div class="flex items-center justify-center gap-1 mb-2 relative z-10">
+                                <span class="text-6xl font-black text-white drop-shadow-lg">$30</span>
+                            </div>
+                            <p class="text-accent text-xs font-black uppercase tracking-widest mb-6 bg-accent/20 px-3 py-1 rounded-full border border-accent/30 inline-block relative z-10">One-Time Setup</p>
+                            
+                            <a href="https://wa.me/917340337074?text=Hello,%20I%20am%20interested%20in%20the%20$30%20Single%20Page%20Property%20Business%20Information%20Website%20offer." target="_blank" class="w-full bg-gradient-to-r from-accent to-yellow-500 text-dark font-black px-6 py-4 rounded-xl hover:scale-105 hover:shadow-[0_0_20px_rgba(245,158,11,0.6)] transition-all flex items-center justify-center gap-2 relative z-10 text-lg">
+                                Claim Offer <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            </a>
+                            <p class="text-white/50 text-[10px] mt-4 font-semibold uppercase">*Limited Time Offer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section: Enterprise Cost Estimates -->
+        <section id="pricing" class="pt-24 pb-28 relative overflow-hidden bg-blue-950">
+            <!-- 3D Glowing Background Elements -->
+            <div class="absolute top-10 left-10 w-72 h-72 bg-blue-600 rounded-full filter blur-[120px] opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600 rounded-full filter blur-[150px] opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <!-- Main Headers -->
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h2 class="inline-block py-1 px-4 rounded-full bg-white/10 text-cyan-300 font-bold text-sm mb-4 border border-white/20 backdrop-blur-md shadow-[0_0_15px_rgba(34,211,238,0.3)]">Custom Development Estimates</h2>
+                    <p class="mt-2 text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6 drop-shadow-lg">
+                        Enterprise Software <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Cost Estimates</span>
+                    </p>
+                    <p class="mt-4 max-w-3xl text-lg text-gray-400 mx-auto leading-relaxed">
+                        We deliver 100% custom-designed platforms. The packages below are baseline examples to give you an idea of the investment. For exact project scoping and confirmed customized quotes, please consult directly with our engineering team.
+                    </p>
+                </div>
+
+                <!-- The 3 Enterprise Pricing Boxes -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 max-w-6xl mx-auto items-stretch">
+                    <!-- Pricing Card 1: Dynamic Website -->
+                    <div class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 border-b-[8px] border-b-cyan-700 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_40px_rgba(8,145,178,0.5)] group flex flex-col justify-between">
+                        <div class="absolute -top-6 -right-6 w-20 h-20 bg-cyan-500 rounded-full filter blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <div class="mb-8 relative z-10">
+                            <div class="w-16 h-16 bg-cyan-500/20 text-cyan-400 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-cyan-500/30 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(34,211,238,0.2)]"><i class="fa-solid fa-laptop-code"></i></div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Dynamic Website</h3>
+                            <p class="text-gray-400 text-sm h-10">Perfect for agencies showcasing properties.</p>
+                            <div class="mt-6 flex items-baseline gap-1">
+                                <span class="text-5xl font-black text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">$299</span>
+                                <span class="text-gray-400 font-medium">/starts</span>
+                            </div>
+                            <ul class="space-y-4 mt-8">
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-base shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>Custom Premium Design</span></li>
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-base shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>Dynamic Property Listings</span></li>
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-base shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>WhatsApp Button Integration</span></li>
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-cyan-400 mr-3 text-base shadow-[0_0_10px_rgba(34,211,238,0.5)] rounded-full bg-black/20"></i> <span>Admin Panel / CMS</span></li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/917340337074?text=Hello,%20I%20want%20to%20discuss%20the%20Dynamic%20Website%20plan%20and%20get%20an%20exact%20quote." target="_blank" class="w-full text-center bg-transparent border-2 border-cyan-500 text-cyan-400 font-bold py-3.5 rounded-xl hover:bg-cyan-500 hover:text-white transition-all duration-300 relative z-10 text-sm">Request Exact Quote</a>
+                    </div>
+
+                    <!-- Pricing Card 2: CRM Portal (POPULAR) -->
+                    <div class="relative bg-gradient-to-b from-blue-600 via-indigo-700 to-purple-800 rounded-3xl p-8 border border-blue-400 border-b-[12px] border-b-indigo-950 shadow-[0_20px_50px_rgba(59,130,246,0.4)] transform md:-translate-y-8 md:scale-105 transition-all duration-500 hover:-translate-y-10 hover:shadow-[0_0_60px_rgba(99,102,241,0.7)] group z-20 flex flex-col justify-between">
+                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 text-dark font-black px-6 py-1.5 rounded-full text-xs uppercase tracking-widest shadow-[0_0_20px_rgba(251,191,36,0.8)] animate-pulse border border-yellow-200 whitespace-nowrap">Most Popular</div>
+                        <div class="mb-8 mt-4 relative z-10">
+                            <div class="w-20 h-20 mx-auto bg-white/20 text-white rounded-3xl flex items-center justify-center text-4xl mb-4 shadow-[0_0_20px_rgba(255,255,255,0.2)] border border-white/40 group-hover:rotate-12 transition-transform duration-500 backdrop-blur-sm"><i class="fa-solid fa-users-gear"></i></div>
+                            <h3 class="text-3xl font-black text-white mb-2 text-center">Real Estate CRM</h3>
+                            <p class="text-blue-100 text-sm h-10 font-medium text-center">Advanced lead & staff management system.</p>
+                            <div class="mt-6 flex justify-center items-baseline gap-1">
+                                <span class="text-6xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">$899</span>
+                                <span class="text-blue-200 font-bold">/starts</span>
+                            </div>
+                            <ul class="space-y-4 mt-8">
+                                <li class="flex items-center text-white font-medium text-sm"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-lg shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Everything in Website plan</span></li>
+                                <li class="flex items-center text-white font-medium text-sm"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-lg shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Lead Assignment & Tracking</span></li>
+                                <li class="flex items-center text-white font-medium text-sm"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-lg shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Call & Email Integration API</span></li>
+                                <li class="flex items-center text-white font-medium text-sm"><i class="fa-solid fa-circle-check text-yellow-400 mr-3 text-lg shadow-[0_0_15px_rgba(250,204,21,0.8)] rounded-full bg-black/20"></i> <span>Agent Performance Control</span></li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/917340337074?text=Hello,%20I%20want%20to%20discuss%20the%20Real%20Estate%20CRM%20plan%20and%20get%20an%20exact%20quote." target="_blank" class="w-full text-center bg-white text-indigo-700 font-black py-4 rounded-xl hover:bg-yellow-400 hover:text-dark transition-colors shadow-[0_10px_20px_rgba(0,0,0,0.3)] text-base relative z-10">Request Exact Quote</a>
+                    </div>
+
+                    <!-- Pricing Card 3: Mobile App -->
+                    <div class="relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 border-b-[8px] border-b-pink-700 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transform transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_0_40px_rgba(219,39,119,0.5)] group flex flex-col justify-between">
+                        <div class="absolute -top-6 -left-6 w-20 h-20 bg-pink-500 rounded-full filter blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                        <div class="mb-8 relative z-10">
+                            <div class="w-16 h-16 bg-pink-500/20 text-pink-400 rounded-2xl flex items-center justify-center text-3xl mb-4 border border-pink-500/30 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(219,39,119,0.2)]"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Mobile Application</h3>
+                            <p class="text-gray-400 text-sm h-10">Native Apps for Android & iOS platforms.</p>
+                            <div class="mt-6 flex items-baseline gap-1">
+                                <span class="text-5xl font-black text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">$1,499</span>
+                                <span class="text-gray-400 font-medium">/starts</span>
+                            </div>
+                            <ul class="space-y-4 mt-8">
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-base shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Android & iOS Applications</span></li>
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-base shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Secure Payment Gateway</span></li>
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-base shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Real-time Push Notifications</span></li>
+                                <li class="flex items-center text-gray-300 text-sm"><i class="fa-solid fa-circle-check text-pink-400 mr-3 text-base shadow-[0_0_10px_rgba(219,39,119,0.5)] rounded-full bg-black/20"></i> <span>Geo-Location & Map Search</span></li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/917340337074?text=Hello,%20I%20want%20to%20discuss%20the%20Mobile%20App%20plan%20and%20get%20an%20exact%20quote." target="_blank" class="w-full text-center bg-transparent border-2 border-pink-500 text-pink-400 font-bold py-3.5 rounded-xl hover:bg-pink-500 hover:text-white transition-all duration-300 relative z-10 text-sm">Request Exact Quote</a>
+                    </div>
+                </div>
+                
+                <!-- Disclaimer Box -->
+                <div class="mt-12 bg-white/5 border border-cyan-500/30 rounded-2xl p-5 md:p-6 max-w-4xl mx-auto text-left sm:text-center flex flex-col sm:flex-row items-center gap-5 shadow-lg backdrop-blur-sm">
+                    <i class="fa-solid fa-circle-info text-cyan-400 text-3xl flex-shrink-0 animate-pulse"></i>
+                    <p class="text-gray-300 text-sm leading-relaxed text-left">
+                        <strong class="text-white tracking-wide uppercase text-xs block mb-1">Important Pricing Notice:</strong> 
+                        The prices mentioned above are strictly baseline estimates. Every portal and software we engineer is <span class="text-cyan-300 font-bold">100% Custom Designed</span> from scratch for your brand. Because of this, the final charges depend entirely on your design complexity. Please <a href="https://wa.me/917340337074?text=Hello,%20I%20would%20like%20to%20discuss%20my%20custom%20software%20requirement%20and%20get%20an%20exact%20quote." target="_blank" class="text-green-400 hover:text-green-300 font-bold underline transition-colors">contact our team on WhatsApp</a> to consult with an architect.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-blue-950 rounded-[2.5rem] overflow-hidden shadow-2xl border border-blue-900">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="p-10 md:p-16 text-white bg-gradient-to-br from-blue-950 to-blue-900 lg:border-r border-blue-800 flex flex-col justify-between">
+                            <div>
+                                <h2 class="text-3xl md:text-4xl font-bold mb-6">Let's Build Your Digital Real Estate Empire.</h2>
+                                <p class="text-blue-200 mb-8 text-lg">Contact us today to discuss your software requirements. Our experts will design a custom technology roadmap for your business.</p>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center"><i class="fa-solid fa-phone text-xl"></i></div>
+                                        <div><p class="text-sm text-blue-200">Call Us</p><p class="font-bold text-lg">+91 7340337074</p></div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center"><i class="fa-solid fa-envelope text-xl"></i></div>
+                                        <div><p class="text-sm text-blue-200">Email Us</p><p class="font-bold text-lg">contact@restech.in</p></div>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 bg-white/10 rounded-full flex-shrink-0 flex items-center justify-center"><i class="fa-solid fa-building text-xl"></i></div>
+                                        <div><p class="text-sm text-blue-200">Headquarters</p><p class="font-bold text-lg leading-tight">Bengaluru, Karnataka<br><span class="text-sm font-normal text-blue-100">India</span></p></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Regional listings -->
+                            <div class="mt-8 pt-6 border-t border-blue-800">
+                                <p class="text-sm text-blue-200 mb-4 flex items-center gap-2"><i class="fa-solid fa-map-location-dot"></i> Regional Branches (India)</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Hyderabad</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Pune</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Mumbai</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Gurugram</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Chennai</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Noida</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Jaipur</span>
+                                    <span class="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold">Kolkata</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Direct Connect Buttons -->
+                        <div class="p-10 md:p-16 bg-white relative flex flex-col items-center justify-center text-center overflow-hidden">
+                            <!-- Background elements -->
+                            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse pointer-events-none"></div>
+                            <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse pointer-events-none" style="animation-delay: 2s;"></div>
+
+                            <div class="relative z-10 w-full max-w-sm flex flex-col items-center">
+                                <span class="bg-blue-50 text-blue-700 text-xs font-black uppercase tracking-widest py-1.5 px-4 rounded-full mb-6 shadow-sm border border-blue-200 flex items-center gap-1.5"><i class="fa-solid fa-bolt text-yellow-500"></i> Fast Track Service</span>
+
+                                <h3 class="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight">Connect <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Instantly</span></h3>
+                                <p class="text-gray-500 mb-10 text-sm md:text-base font-medium leading-relaxed">Skip the long forms. Get an immediate response from our senior real estate tech experts.</p>
+                                
+                                <div class="w-full space-y-4">
+                                    <!-- WhatsApp Button -->
+                                    <a href="https://wa.me/917340337074?text=Hello,%20I%20am%20interested%20in%20your%20IT%20services." target="_blank" class="w-full relative group flex items-center justify-center gap-3 bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white font-black py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_10px_25px_rgba(37,211,102,0.4)] hover:-translate-y-1 overflow-hidden border border-[#20bd5a]">
+                                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+                                        <i class="fa-brands fa-whatsapp text-2xl relative z-10 group-hover:animate-wiggle"></i>
+                                        <span class="relative z-10 text-lg">Chat on WhatsApp</span>
+                                    </a>
+
+                                    <!-- Direct Call Button -->
+                                    <a href="tel:+917340337074" class="w-full relative group flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black py-4 rounded-2xl transition-all duration-300 hover:shadow-[0_10px_25px_rgba(37,99,235,0.4)] hover:-translate-y-1 overflow-hidden border border-blue-500">
+                                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+                                        <i class="fa-solid fa-phone-volume text-xl relative z-10 group-hover:animate-wiggle"></i>
+                                        <span class="relative z-10 text-lg">Call +91 7340337074</span>
+                                    </a>
+                                    
+                                    <!-- Email Button -->
+                                    <a href="mailto:contact@restech.in" class="w-full relative group flex items-center justify-center gap-3 bg-gray-50 text-gray-800 font-bold py-4 rounded-2xl transition-all duration-300 hover:bg-gray-100 hover:shadow-md border border-gray-200">
+                                        <i class="fa-solid fa-envelope text-gray-500 text-xl group-hover:text-primary transition-colors"></i>
+                                        <span>contact@restech.in</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </div> <!-- End Home View -->
 
-    <!-- About View Removed (Merged into Home Page) -->
-
     <!-- Footer -->
-    <footer class="bg-blue-950 text-gray-400 py-12 border-t border-blue-900 relative mt-10">
-        <!-- PICHKA HUA WHATSAPP BOT (English Text) -->
+    <footer class="bg-blue-950 text-gray-400 py-16 border-t border-blue-900 relative">
+        
+        <!-- PICHKA HUA WHATSAPP BOT -->
         <div class="absolute -top-[80px] right-6 md:right-16 z-50 flex flex-col items-center justify-end w-32 h-24 pointer-events-none transform scale-[0.8] origin-bottom">
             <div class="absolute -top-6 -left-12 bg-yellow-300 text-black border-2 border-black font-black px-3 py-2 rounded-2xl shadow-[4px_4px_0px_rgba(0,0,0,1)] animate-comic-bounce whitespace-nowrap z-30 pointer-events-auto">
-                <p class="text-[12px] leading-tight">Ouch! I got squished! 😵‍💫</p>
+                <p class="text-[12px] leading-tight">Ouch! I got squished! 😵‍C</p>
                 <p class="text-[9px] text-red-600 tracking-wide mt-0.5 uppercase">Get me out of here! (Click)</p>
                 <div class="absolute -bottom-2 right-6 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-black"></div>
                 <div class="absolute -bottom-[6px] right-[25px] w-0 h-0 border-l-[6px] border-r-[6px] border-t-[10px] border-l-transparent border-r-transparent border-t-yellow-300"></div>
@@ -1023,21 +1239,16 @@
             </a>
         </div>
 
-        <!-- Subtle Background Decoration -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600 rounded-full filter blur-[120px] opacity-10 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-10 w-48 h-48 bg-primary rounded-full filter blur-[100px] opacity-20 pointer-events-none"></div>
-
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                 <!-- Brand Info -->
                 <div>
-                    <div class="flex items-center gap-2 mb-6 group cursor-pointer w-max">
+                    <div class="flex items-center gap-2 mb-6 group cursor-pointer w-max" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-500 text-white rounded-xl flex items-center justify-center text-2xl shadow-[0_4px_15px_rgba(37,99,235,0.4)] group-hover:scale-105 transition-transform shrink-0"><i class="fa-solid fa-house-chimney"></i></div>
                         <span class="font-sans font-extrabold text-3xl text-white tracking-tighter">Res<span class="text-blue-400">tech</span></span>
                     </div>
-                    <p class="text-sm text-blue-200/80 mb-6 leading-relaxed pr-4">Real Estate Software Technology Pvt. Ltd. provides global standard IT solutions, driving the digital transformation of real estate businesses worldwide.</p>
+                    <p class="text-sm text-blue-200/80 mb-6 leading-relaxed">Real Estate Software Technology Pvt. Ltd. provides global standard IT solutions, driving the digital transformation of real estate businesses worldwide.</p>
                     
-                    <!-- Social Icons -->
                     <div class="flex gap-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-300 hover:bg-blue-600 hover:text-white hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(37,99,235,0.4)] transition-all"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-300 hover:bg-blue-400 hover:text-white hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(96,165,250,0.4)] transition-all"><i class="fa-brands fa-twitter"></i></a>
@@ -1050,10 +1261,10 @@
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm relative inline-block">Services<span class="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-blue-500 rounded-full"></span></h4>
                     <ul class="space-y-3 text-sm text-blue-200/80">
-                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> Web Portals</a></li>
-                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> CRM Development</a></li>
-                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> Mobile Apps</a></li>
-                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> API Integrations</a></li>
+                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> Web Portals</a></li>
+                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> CRM Development</a></li>
+                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> Mobile Apps</a></li>
+                        <li><a href="#services" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> API Integrations</a></li>
                     </ul>
                 </div>
                 
@@ -1061,10 +1272,10 @@
                 <div>
                     <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm relative inline-block">Quick Links<span class="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-blue-500 rounded-full"></span></h4>
                     <ul class="space-y-3 text-sm text-blue-200/80">
-                        <li><a href="#technologies-page" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> Technologies</a></li>
-                        <li><a href="#integrations-page" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> Integrations</a></li>
-                        <li><a href="#about-page" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> About Us</a></li>
-                        <li><a href="#contact" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white transition-colors"></i> Contact Us</a></li>
+                        <li><a href="#technologies-page" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> Technologies</a></li>
+                        <li><a href="#integrations-page" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> Integrations Hub</a></li>
+                        <li><a href="#about" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> About Us</a></li>
+                        <li><a href="#contact" class="hover:text-white hover:translate-x-2 transition-all flex items-center gap-2 group"><i class="fa-solid fa-angle-right text-blue-500 text-[10px] group-hover:text-white"></i> Contact Us</a></li>
                     </ul>
                 </div>
                 
@@ -1073,16 +1284,16 @@
                     <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm relative inline-block">Get In Touch<span class="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-blue-500 rounded-full"></span></h4>
                     <div class="space-y-4">
                         <a href="mailto:contact@restech.in" class="flex items-center gap-3 group text-sm text-blue-200/80 hover:text-white transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-500 transition-all shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0"><i class="fa-solid fa-envelope"></i></div>
                             <span>contact@restech.in</span>
                         </a>
                         <a href="tel:+917340337074" class="flex items-center gap-3 group text-sm text-blue-200/80 hover:text-white transition-colors">
-                            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-green-500 group-hover:text-white group-hover:border-green-400 transition-all shrink-0"><i class="fa-solid fa-phone"></i></div>
+                            <div class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:bg-green-500 group-hover:text-white transition-all shrink-0"><i class="fa-solid fa-phone"></i></div>
                             <span>+91 7340337074</span>
                         </a>
                         <div class="flex items-center gap-3 text-sm text-blue-200/80 mt-2 pt-2 border-t border-white/5">
                             <i class="fa-solid fa-location-dot text-blue-500 ml-3"></i>
-                            <span>Bengaluru, Karnataka, India</span>
+                            <span>Bengaluru, India</span>
                         </div>
                     </div>
                 </div>
@@ -1119,7 +1330,7 @@
     </div>
 
     <!-- Live Chatbot Window -->
-    <div id="live-chat-window" class="fixed bottom-[160px] right-6 md:right-8 w-[90vw] max-w-[350px] h-[500px] max-h-[70vh] bg-white rounded-2xl shadow-2xl z-[110] flex flex-col transition-all duration-300 scale-0 origin-bottom-right opacity-0 pointer-events-none border border-gray-200 overflow-hidden">
+    <div id="live-chat-window" class="fixed bottom-[160px] right-6 md:right-8 w-[90vw] max-w-[360px] h-[500px] max-h-[70vh] bg-white rounded-2xl shadow-2xl z-[110] flex flex-col transition-all duration-300 scale-0 origin-bottom-right opacity-0 pointer-events-none border border-gray-200 overflow-hidden">
         <div class="bg-gradient-to-r from-primary to-blue-800 p-4 flex justify-between items-center text-white shrink-0 shadow-md relative z-10">
             <div class="flex items-center gap-3">
                 <div class="relative">
@@ -1138,103 +1349,360 @@
     </div>
 
     <script>
-        // SPA Routing
+        // SPA Routing & Navigation
         function navigate(view) {
             document.querySelectorAll('#home-view, #about-view, #integrations-view').forEach(el => {
                 if(el) el.classList.add('hidden');
             });
-            if(['about', 'integrations'].includes(view)) {
-                let v = document.getElementById(view + '-view');
-                if(v) v.classList.remove('hidden');
-                window.scrollTo(0,0);
-            } else {
-                let h = document.getElementById('home-view');
-                if(h) h.classList.remove('hidden');
-            }
+            let h = document.getElementById('home-view');
+            if(h) h.classList.remove('hidden');
         }
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href').substring(1);
-                const spaviews = ['integrations-page']; // about-page removed since it's on homepage now
                 
-                if (spaviews.includes(targetId)) {
-                    e.preventDefault();
-                    navigate(targetId.split('-')[0]);
-                } else if (['home', 'offer', 'about', 'services', 'demo', 'calling-integration', 'mega-offer', 'pricing', 'contact', 'technologies-page', 'developers-page'].includes(targetId)) {
+                if (['home', 'offer', 'about', 'services', 'demo', 'integrations-page', 'pricing', 'contact', 'technologies-page', 'developers-page', 'mega-offer'].includes(targetId)) {
                     e.preventDefault();
                     navigate('home');
                     setTimeout(() => {
                         const target = document.getElementById(targetId);
                         if(target) window.scrollTo({top: target.offsetTop - 80, behavior: 'smooth'});
-                    }, 300); // 300ms delay to prevent mobile ghost click
+                    }, 100);
                 }
 
-                // Securely close mobile menu with a delay to prevent touch ghosting (Tap Bleeding)
+                // Close mobile menu
                 const mobileMenu = document.getElementById('mobile-menu');
                 if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300); // 300ms delay blocks the ghost click on underlying elements
+                    mobileMenu.classList.add('hidden');
                 }
             });
         });
 
         // Mobile Menu Button
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
-        // Demo Tabs
-        function showDemoCategory(categoryId) {
-            document.querySelectorAll('.demo-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.demo-btn').forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white', 'shadow-md');
-                btn.classList.add('bg-transparent', 'text-gray-500');
-            });
-            const target = document.getElementById('demo-' + categoryId);
-            if(target) target.classList.remove('hidden');
-            document.querySelectorAll(`[data-btn-category="${categoryId}"]`).forEach(btn => {
-                btn.classList.add('bg-primary', 'text-white', 'shadow-md');
-                btn.classList.remove('bg-transparent', 'text-gray-500');
+        // ==========================================
+        // INTERACTIVE LIVE DEMO DATA & LOGIC
+        // ==========================================
+        const initialProperties = [
+            { id: 1, title: 'Prestige Lakeside Villa', location: 'bengaluru', type: 'villa', price: 620000, img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1000' },
+            { id: 2, title: 'Sobha Heights Condo', location: 'bengaluru', type: 'apartment', price: 245000, img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1000' },
+            { id: 3, title: 'The Address Penthouse', location: 'dubai', type: 'apartment', price: 980000, img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000' },
+            { id: 4, title: 'Marina Bay Premium', location: 'mumbai', type: 'apartment', price: 410000, img: 'https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=1000' },
+            { id: 5, title: 'Lodha Bellezza Mansion', location: 'mumbai', type: 'villa', price: 780000, img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000' },
+            { id: 6, title: 'Palm Jumeirah Retreat', location: 'dubai', type: 'villa', price: 1250000, img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1000' }
+        ];
+
+        function renderPortalDemo(list) {
+            const grid = document.getElementById('portal-grid');
+            if(!grid) return;
+            grid.innerHTML = '';
+            
+            list.forEach(prop => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-md transition-all flex flex-col';
+                card.innerHTML = `
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="${prop.img}" alt="${prop.title}" class="w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black px-2 py-1 rounded-md uppercase tracking-wide">
+                            ${prop.location}
+                        </div>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h5 class="font-extrabold text-gray-900 text-sm leading-tight">${prop.title}</h5>
+                            <p class="text-xs text-gray-500 capitalize mt-1">${prop.type}</p>
+                        </div>
+                        <div class="flex items-center justify-between mt-4 pt-2 border-t border-gray-100">
+                            <span class="font-black text-primary text-base">$${prop.price.toLocaleString()}</span>
+                            <a href="https://wa.me/917340337074?text=Hi,%20I%20am%20inquiring%20about%20${encodeURIComponent(prop.title)}" target="_blank" class="bg-green-100 text-green-700 hover:bg-green-200 transition text-[11px] font-black px-3 py-1.5 rounded-lg flex items-center gap-1">
+                                <i class="fa-brands fa-whatsapp"></i> Inquire
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
 
-        // Restech AI Search
-        const apiKey = ""; // Add your Google Gemini API Key here to activate AI features
-        const aiForm = document.getElementById('restech-ai-form');
-        const systemInstruction = "You are Restech AI. Don't reveal Google/Gemini.";
-        const chatSystemInstruction = "You are Restech Assistant, a helpful sales rep for Real Estate Software Technology Pvt. Ltd. (Restech). Keep answers brief and professional.";
-        
-        if(aiForm) {
-            aiForm.addEventListener('submit', async (e) => {
+        function filterPortalDemo() {
+            const loc = document.getElementById('portal-demo-loc').value;
+            const type = document.getElementById('portal-demo-type').value;
+            const sort = document.getElementById('portal-demo-sort').value;
+
+            let filtered = initialProperties.filter(p => {
+                const matchesLoc = loc === 'all' || p.location === loc;
+                const matchesType = type === 'all' || p.type === type;
+                return matchesLoc && matchesType;
+            });
+
+            if (sort === 'low') filtered.sort((a,b) => a.price - b.price);
+            else filtered.sort((a,b) => b.price - a.price);
+
+            renderPortalDemo(filtered);
+        }
+
+        // CRM Lead Simulator Setup
+        let simulatedLeads = [
+            { id: 101, name: 'Michael Chang', interest: 'The Address Penthouse', status: 'Inbound', updated: 'Just now' },
+            { id: 102, name: 'Sara Miller', interest: 'Sobha Heights Condo', status: 'Assigned', updated: '2 mins ago' },
+            { id: 103, name: 'Yousuf Ali', interest: 'Palm Jumeirah Retreat', status: 'Negotiating', updated: '10 mins ago' },
+            { id: 104, name: 'Vikram Singh', interest: 'Lodha Bellezza Mansion', status: 'Inbound', updated: '15 mins ago' }
+        ];
+
+        function renderCrmSimulator() {
+            const body = document.getElementById('crm-table-body');
+            if(!body) return;
+            body.innerHTML = '';
+            
+            simulatedLeads.forEach(lead => {
+                let statusBadge = '';
+                if(lead.status === 'Inbound') statusBadge = '<span class="bg-blue-900/40 text-blue-300 text-xs px-2.5 py-1 rounded-full font-bold border border-blue-800">New Inbound</span>';
+                else if(lead.status === 'Assigned') statusBadge = '<span class="bg-yellow-900/40 text-yellow-300 text-xs px-2.5 py-1 rounded-full font-bold border border-yellow-800">Agent Contacting</span>';
+                else statusBadge = '<span class="bg-green-900/40 text-green-300 text-xs px-2.5 py-1 rounded-full font-bold border border-green-800">Hot Lead</span>';
+
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-slate-800 hover:bg-slate-800/30 transition-all';
+                tr.innerHTML = `
+                    <td class="py-4 px-2 font-bold text-white">${lead.name}</td>
+                    <td class="py-4 px-2 text-slate-300">${lead.interest}</td>
+                    <td class="py-4 px-2">${statusBadge}</td>
+                    <td class="py-4 px-2">
+                        <a href="https://wa.me/917340337074?text=CRM%20Simulator:%20Follow%20up%20with%20${encodeURIComponent(lead.name)}%20for%20${encodeURIComponent(lead.interest)}" target="_blank" class="text-green-400 hover:text-green-300 transition text-sm flex items-center gap-1 font-bold">
+                            <i class="fa-brands fa-whatsapp"></i> Ping Client
+                        </a>
+                    </td>
+                `;
+                body.appendChild(tr);
+            });
+            document.getElementById('crm-stat-total').innerText = simulatedLeads.length + 38;
+        }
+
+        function simulateNewLead() {
+            const firstNames = ['John', 'Ema', 'Rahul', 'David', 'Fatima', 'Olivia', 'Zayn'];
+            const lastNames = ['Smith', 'Al-Maktoum', 'Sharma', 'Gomez', 'Tan', 'O\'Connor', 'Patel'];
+            const props = ['The Address Penthouse', 'Marina Bay Premium', 'Prestige Lakeside Villa', 'Sobha Heights Condo'];
+            
+            const rName = firstNames[Math.floor(Math.random()*firstNames.length)] + ' ' + lastNames[Math.floor(Math.random()*lastNames.length)];
+            const rProp = props[Math.floor(Math.random()*props.length)];
+            
+            const newLead = {
+                id: Date.now(),
+                name: rName,
+                interest: rProp,
+                status: 'Inbound',
+                updated: 'Just now'
+            };
+            
+            simulatedLeads.unshift(newLead);
+            if(simulatedLeads.length > 6) simulatedLeads.pop();
+            renderCrmSimulator();
+        }
+
+        // Mortgage EMI Calculator logic
+        function calculateEMI() {
+            const val = parseFloat(document.getElementById('calc-val').value) || 0;
+            const down = parseFloat(document.getElementById('calc-down').value) || 0;
+            const rate = parseFloat(document.getElementById('calc-rate').value) || 0;
+            const term = parseFloat(document.getElementById('calc-term').value) || 0;
+
+            const principal = val - down;
+            if (principal <= 0) {
+                document.getElementById('calc-result').innerText = '$0';
+                return;
+            }
+
+            const rMonthly = (rate / 100) / 12;
+            const nMonths = term * 12;
+
+            let monthlyPayment = 0;
+            if (rMonthly === 0) {
+                monthlyPayment = principal / nMonths;
+            } else {
+                monthlyPayment = principal * (rMonthly * Math.pow(1 + rMonthly, nMonths)) / (Math.pow(1 + rMonthly, nMonths) - 1);
+            }
+
+            document.getElementById('calc-result').innerText = `$${Math.round(monthlyPayment).toLocaleString()}`;
+        }
+
+        // Switch Tabs in Sandbox Section
+        function switchSandboxTab(tabId) {
+            document.querySelectorAll('.sandbox-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.sandbox-tab-btn').forEach(btn => {
+                btn.className = 'sandbox-tab-btn flex items-center gap-2 bg-white text-gray-600 font-bold px-6 py-3 rounded-full hover:bg-gray-100 transition-all text-sm md:text-base border border-gray-200';
+            });
+
+            document.getElementById('sandbox-' + tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).className = 'sandbox-tab-btn flex items-center gap-2 bg-primary text-white font-bold px-6 py-3 rounded-full shadow-md transition-all text-sm md:text-base';
+        }
+
+        // Webhook simulator switch logic
+        const simulationSteps = {
+            1: `{
+  "event": "form_submission",
+  "source": "Property Portal",
+  "client": {
+    "name": "Alex Johnson",
+    "phone": "+1 (555) 234-5678",
+    "email": "alex@johnson.com"
+  },
+  "interest": {
+    "property_id": "RES-8923",
+    "budget": "$500,000"
+  }
+}`,
+            2: `{
+  "event": "crm_assignment",
+  "routing_rules": "Location: Bengaluru",
+  "assigned_agent": {
+    "agent_id": "AGT-302",
+    "name": "Arjun Sharma",
+    "status": "notified"
+  },
+  "priority": "HIGH"
+}`,
+            3: `{
+  "event": "whatsapp_dispatch",
+  "template": "welcome_lead_v1",
+  "recipient": "+1 (555) 234-5678",
+  "body": "Hi Alex, Arjun Sharma has received your request regarding Lakeside Villa. Expect a call shortly!",
+  "delivery_status": "sent"
+}`
+        };
+
+        function switchIntegrationSimulation(stepNum) {
+            for(let i=1; i<=3; i++) {
+                const badge = document.getElementById(`int-step-badge-${i}`);
+                if (i === stepNum) {
+                    badge.className = "w-10 h-10 rounded-full bg-cyan-500 text-slate-900 font-black flex items-center justify-center shrink-0 transition-all border-2 border-cyan-400";
+                } else {
+                    badge.className = "w-10 h-10 rounded-full bg-slate-800 text-slate-400 font-black flex items-center justify-center shrink-0 transition-all border border-slate-700";
+                }
+            }
+            document.getElementById('integration-payload-box').innerText = simulationSteps[stepNum];
+        }
+
+        // Preload simulators on document load
+        window.addEventListener('load', () => {
+            renderPortalDemo(initialProperties);
+            renderCrmSimulator();
+            calculateEMI();
+        });
+
+
+        // ==========================================
+        // GEMINI 3 FLASH API INTEGRATION CORE
+        // ==========================================
+        const apiKey = ""; // Canvas auto injects this at runtime if left empty
+        const restechContext = `
+            Act as Restech AI / Restech Assistant, a professional sales engineering system representing "Real Estate Software Technology Private Limited" (Restech), based in Bengaluru, Karnataka, India.
+            
+            Our Services & Offerings:
+            1. $30 Single Page Property Website: Perfect for individual property dealers/brokers. Fully responsive, premium UI, WhatsApp and click-to-call integrations, and trained AI agent setup. Free social media assets and Google listing setups included.
+            2. Dynamic Property Portal ($299/start): Large listing platforms with map searches, advanced custom categorization, broker portals, CMS dashboards.
+            3. Custom CRM ($899/start): Dynamic lead distribution system, team management, Twilio/WhatsApp webhook routing, automated follow-ups.
+            4. Cross-Platform Mobile Apps ($1,499/start): iOS & Android apps built with Flutter or React Native, utilizing geo-location APIs, secure checkout gateways.
+            
+            Keep answers highly accurate, enthusiastic, and sales-driven. Direct users to connect with our engineers via WhatsApp (+91 7340337074) for fully custom architectures.
+        `;
+
+        // Fill Search helper
+        function fillAISearch(val) {
+            const input = document.getElementById('ai-search-input');
+            if(input) {
+                input.value = val;
+                // scroll slightly to form
+                const target = document.getElementById('restech-ai-form');
+                if(target) window.scrollTo({top: target.offsetTop - 120, behavior: 'smooth'});
+            }
+        }
+
+        // Restech AI Search Form submission
+        const aiSearchForm = document.getElementById('restech-ai-form');
+        if(aiSearchForm) {
+            aiSearchForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const q = document.getElementById('ai-search-input').value.trim();
                 if(!q) return;
-                
-                // Clear the input field after capturing the query
-                document.getElementById('ai-search-input').value = '';
                 
                 document.getElementById('ai-results-box').classList.remove('hidden');
                 document.getElementById('ai-loading').classList.remove('hidden');
                 document.getElementById('ai-response-content').classList.add('hidden');
                 
                 try {
-                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                        method: 'POST', headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({contents:[{parts:[{text:q}]}], systemInstruction:{parts:[{text:systemInstruction}]}})
-                    });
-                    const data = await res.json();
-                    let text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Error processing request. Ensure your API Key is valid.";
-                    document.getElementById('ai-response-content').innerHTML = `<p class="mt-2">${text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</p>`;
+                    // Exponential backoff helper
+                    let delay = 1000;
+                    let success = false;
+                    let textResult = '';
+                    
+                    for(let i = 0; i < 3; i++) {
+                        try {
+                            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`, {
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify({
+                                    contents: [{parts: [{text: q}]}],
+                                    systemInstruction: {parts: [{text: restechContext}]}
+                                })
+                            });
+                            
+                            if (res.ok) {
+                                const data = await res.json();
+                                textResult = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response received.";
+                                success = true;
+                                break;
+                            } else {
+                                // Trigger backoff
+                                await new Promise(resolve => setTimeout(resolve, delay));
+                                delay *= 2;
+                            }
+                        } catch (fetchErr) {
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            delay *= 2;
+                        }
+                    }
+
+                    if (success) {
+                        // Safe rendering with Markdown-to-HTML replacements
+                        let formattedText = textResult
+                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\n/g, '<br>');
+                        document.getElementById('ai-response-content').innerHTML = `
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-sm shrink-0"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                <div>
+                                    <h4 class="font-extrabold text-gray-900">Restech Solutions Expert</h4>
+                                    <p class="text-xs text-gray-400 font-semibold">Processed via Gemini Core</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed">${formattedText}</p>
+                            <div class="mt-6 pt-4 border-t border-gray-100 flex justify-end">
+                                <a href="https://wa.me/917340337074?text=Hi%20Restech,%20I%20have%20an%20inquiry%20regarding:%20${encodeURIComponent(q)}" target="_blank" class="bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white text-xs font-black px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-md">
+                                    <i class="fa-brands fa-whatsapp"></i> Chat with Expert
+                                </a>
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById('ai-response-content').innerHTML = "<p class='text-red-500 font-bold'>The AI request took too long to complete. Please check your connectivity or reach out directly to us on WhatsApp (+91 7340337074).</p>";
+                    }
                 } catch(err) {
-                    document.getElementById('ai-response-content').innerHTML = "<p class='text-red-500'>Network Error. Have you added your Gemini API key?</p>";
+                    document.getElementById('ai-response-content').innerHTML = "<p class='text-red-500 font-bold'>Network Error. Direct connection available at +91 7340337074.</p>";
                 }
+                
                 document.getElementById('ai-loading').classList.add('hidden');
                 document.getElementById('ai-response-content').classList.remove('hidden');
             });
         }
-        document.getElementById('ai-close-btn')?.addEventListener('click', () => document.getElementById('ai-results-box').classList.add('hidden'));
+        document.getElementById('ai-close-btn')?.addEventListener('click', () => {
+            document.getElementById('ai-results-box').classList.add('hidden');
+        });
 
-        // Live Chatbot Setup
+        // ==========================================
+        // FLOATING AGENT CHATBOT CONTROLLER
+        // ==========================================
         const chatWin = document.getElementById('live-chat-window');
         const chatMsgArea = document.getElementById('chat-messages-area');
         let chatHist = [], chatOpen = false, chatFirst = true;
@@ -1246,9 +1714,9 @@
                 chatWin.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
                 if(chatFirst) {
                     setTimeout(() => {
-                        appendMsg('model', "Hello! 👋 I am the Restech Assistant. Let's grow your real estate business today!");
+                        appendMsg('model', "Hello! 👋 I am the Restech Assistant. Looking to set up a property portal, custom CRM, or discuss the mega $30 offer today?");
                         chatFirst = false;
-                    }, 500);
+                    }, 400);
                 }
             } else {
                 chatWin.classList.add('scale-0', 'opacity-0', 'pointer-events-none');
@@ -1258,15 +1726,15 @@
 
         function appendMsg(sender, text) {
             const div = document.createElement('div');
-            div.className = `flex w-full mb-4 ${sender==='user'?'justify-end':'justify-start'}`;
-            if(sender==='user') {
-                div.innerHTML = `<div class="bg-primary text-white text-sm py-2 px-4 rounded-2xl rounded-tr-sm max-w-[85%]">${text}</div>`;
-            } else if(sender==='model') {
-                let fmt = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                div.innerHTML = `<div class="bg-white border border-gray-200 text-gray-800 text-sm py-2 px-4 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm">${fmt}</div>`;
+            div.className = `flex w-full mb-4 ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            if(sender === 'user') {
+                div.innerHTML = `<div class="bg-primary text-white text-sm py-2.5 px-4 rounded-2xl rounded-tr-sm max-w-[85%] font-medium shadow-sm">${text}</div>`;
+            } else if(sender === 'model') {
+                let fmt = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+                div.innerHTML = `<div class="bg-white border border-gray-200 text-gray-800 text-sm py-2.5 px-4 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm font-medium leading-relaxed">${fmt}</div>`;
             } else {
                 div.id = 'typ-ind';
-                div.innerHTML = `<div class="bg-white border border-gray-200 py-3 px-4 rounded-2xl rounded-tl-sm flex gap-1.5"><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.1s"></div></div>`;
+                div.innerHTML = `<div class="bg-white border border-gray-200 py-3 px-4 rounded-2xl rounded-tl-sm flex gap-1.5 shadow-sm"><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></div><div class="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style="animation-delay:0.1s"></div></div>`;
             }
             chatMsgArea.appendChild(div);
             chatMsgArea.scrollTop = chatMsgArea.scrollHeight;
@@ -1277,31 +1745,51 @@
             const input = document.getElementById('chat-input-field');
             const txt = input.value.trim();
             if(!txt) return;
-            appendMsg('user', txt); input.value = ''; appendMsg('typing', '');
+            
+            appendMsg('user', txt);
+            input.value = '';
+            appendMsg('typing', '');
             
             try {
-                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST', headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({contents:[...chatHist, {role:'user', parts:[{text:txt}]}], systemInstruction:{parts:[{text:chatSystemInstruction}]}})
+                // Incorporate conversation history payload
+                let chatPayload = [...chatHist];
+                chatPayload.push({role: 'user', parts: [{text: txt}]});
+
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        contents: chatPayload,
+                        systemInstruction: {parts: [{text: restechContext}]}
+                    })
                 });
+                
                 const data = await res.json();
-                const botTxt = data.candidates?.[0]?.content?.parts?.[0]?.text || "Network error or Invalid API key. Try again.";
-                chatHist.push({role:'user', parts:[{text:txt}]}, {role:'model', parts:[{text:botTxt}]});
+                const botTxt = data.candidates?.[0]?.content?.parts?.[0]?.text || "Thanks for your input! Connect with us at Bengaluru HQ or drop us a WhatsApp at +91 7340337074.";
+                
+                chatHist.push({role: 'user', parts: [{text: txt}]}, {role: 'model', parts: [{text: botTxt}]});
                 document.getElementById('typ-ind')?.remove();
                 appendMsg('model', botTxt);
             } catch(e) {
                 document.getElementById('typ-ind')?.remove();
-                appendMsg('model', "Sorry, network error! Have you added your Gemini API key in the code?");
+                appendMsg('model', "Thank you! I've logged your request. For immediate booking of the $30 package, chat with our agents live on WhatsApp (+91 7340337074).");
             }
         });
 
-        // Back to top
+        // Back to top scroll tracking
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('backToTopBtn');
-            if(window.scrollY > 400) btn.classList.replace('opacity-0', 'opacity-100'), btn.classList.remove('pointer-events-none', 'translate-y-5');
-            else btn.classList.replace('opacity-100', 'opacity-0'), btn.classList.add('pointer-events-none', 'translate-y-5');
+            if(window.scrollY > 400) {
+                btn.classList.replace('opacity-0', 'opacity-100');
+                btn.classList.remove('pointer-events-none', 'translate-y-5');
+            } else {
+                btn.classList.replace('opacity-100', 'opacity-0');
+                btn.classList.add('pointer-events-none', 'translate-y-5');
+            }
         });
-        document.getElementById('backToTopBtn')?.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+        document.getElementById('backToTopBtn')?.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
     </script>
 </body>
 </html>
