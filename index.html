@@ -6,14 +6,15 @@
     <title>Real Estate Software Technology Pvt. Ltd. | Global IT Solutions</title>
     <meta name="description" content="International level software company specializing in real estate portals, CRM, custom apps, and seamless integrations.">
     
-    <!-- Google Fonts: Inter (Body) & Montserrat (Headings for that Segoe UI Black feel) -->
+    <!-- FONTS PRELOAD: Yeh mobile par font delay khatam karega -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@900&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -25,42 +26,18 @@
                         heading: ['Montserrat', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#1E3A8A', // Deep Blue
-                        secondary: '#3B82F6', // Bright Blue
-                        accent: '#F59E0B', // Amber
-                        dark: '#172554', // Darker Blue
+                        primary: '#1E3A8A',
+                        secondary: '#3B82F6',
+                        accent: '#F59E0B',
+                        dark: '#172554',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Pro Design Logic: Typography Injection */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif !important;
-            font-weight: 900 !important;
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #3B82F6, #60A5FA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-bg {
-            background: linear-gradient(rgba(23, 37, 84, 0.85), rgba(23, 37, 84, 0.95)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
-        }
-        .hover-card {
-            transition: all 0.3s ease;
-        }
-        .hover-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        body { font-family: 'Inter', sans-serif !important; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif !important; font-weight: 900 !important; }
         
         @keyframes heartbeat { 
             0%, 100% { transform: scale(1); } 
@@ -102,12 +79,12 @@
         .animate-shine::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 30%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
-            animation: sweep-shine 4s infinite ease-in-out;
-            z-index: 10;
-            pointer-events: none;
-        }
+        .gradient-text { background: linear-gradient(to right, #3B82F6, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-bg { background: linear-gradient(rgba(23, 37, 84, 0.85), rgba(23, 37, 84, 0.95)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; animation: marquee 20s linear infinite; }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden">
@@ -164,7 +141,7 @@
 
     <div id="home-view">
 
-        <section id="home" class="hero-bg pt-32 md:pt-36 lg:pt-40 pb-8 relative overflow-hidden">
+        <section id="home" class="hero-bg pt-32 md:pt-36 lg:pt-40 pb-12 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/90 to-transparent"></div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -215,32 +192,60 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <div class="bg-white py-6 md:py-8 border-b border-gray-200 overflow-x-hidden">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-                <p class="text-[10px] sm:text-sm font-black text-gray-500 uppercase tracking-widest mb-6 whitespace-nowrap font-heading">Our Seamless Third-Party Integrations</p>
-                <div class="w-full overflow-x-auto hide-scrollbar">
-                    <div class="flex flex-nowrap items-center justify-start lg:justify-center gap-3 sm:gap-6 md:gap-16 min-w-max pb-2 px-2">
-                        <div class="flex items-center gap-1.5 shrink-0"><i class="fa-brands fa-whatsapp text-xl sm:text-3xl" style="color: #25D366;"></i><span class="font-bold text-gray-800 text-xs sm:text-base">WhatsApp</span></div>
-                        <div class="flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-phone-volume text-lg sm:text-2xl text-blue-500"></i><span class="font-bold text-gray-800 text-xs sm:text-base">Cloud Calling</span></div>
-                        <div class="flex items-center gap-1.5 shrink-0" title="Stripe"><i class="fa-brands fa-stripe text-3xl sm:text-5xl" style="color: #635BFF;"></i></div>
-                        <div class="flex items-center gap-1.5 shrink-0"><i class="fa-solid fa-envelope-circle-check text-lg sm:text-2xl text-red-500"></i><span class="font-bold text-gray-800 text-xs sm:text-base">Email SMTP</span></div>
-                        <div class="flex items-center gap-1.5 shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="22px" height="22px" class="sm:w-[28px] sm:h-[28px]">
-                                <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
-                                <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
-                                <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
-                                <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
-                            </svg>
-                            <span class="font-bold text-gray-800 text-xs sm:text-base">Maps API</span>
-                        </div>
+
+                <!-- INTEGRATIONS MOVED INSIDE HERO -->
+                <div class="mt-16 bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
+                    <p class="text-[10px] sm:text-sm font-bold text-white/60 uppercase tracking-widest mb-6 text-center">Our Seamless Third-Party Integrations</p>
+                    <div class="w-full overflow-hidden relative">
+                        <style>
+                            @keyframes marquee {
+                                0% { transform: translateX(0); }
+                                100% { transform: translateX(-50%); }
+                            }
+                            .animate-marquee {
+                                display: flex;
+                                animation: marquee 20s linear infinite;
+                            }
+                        </style>
+                        <div class="animate-marquee">
+                            <div class="flex flex-nowrap items-center gap-6 sm:gap-12 px-2 shrink-0">
+                                <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-2xl sm:text-3xl" style="color: #25D366;"></i><span class="font-bold text-white text-xs sm:text-base">WhatsApp</span></div>
+                                <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-phone-volume text-xl sm:text-2xl text-blue-400"></i><span class="font-bold text-white text-xs sm:text-base">Cloud Calling</span></div>
+                                <div class="flex items-center gap-2 shrink-0" title="Stripe"><i class="fa-brands fa-stripe text-4xl sm:text-5xl" style="color: #635BFF;"></i></div>
+                                <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-envelope-circle-check text-xl sm:text-2xl text-red-400"></i><span class="font-bold text-white text-xs sm:text-base">Email SMTP</span></div>
+                                <div class="flex items-center gap-2 shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px" class="sm:w-[28px] sm:h-[28px]">
+                                        <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                                        <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                                        <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                                        <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+                                    </svg>
+                                    <span class="font-bold text-white text-xs sm:text-base">Maps API</span>
+                                </div>
+                            </div>
+                            <!-- Duplication for seamless loop -->
+                            <div class="flex flex-nowrap items-center gap-6 sm:gap-12 px-2 shrink-0">
+                                <div class="flex items-center gap-2 shrink-0"><i class="fa-brands fa-whatsapp text-2xl sm:text-3xl" style="color: #25D366;"></i><span class="font-bold text-white text-xs sm:text-base">WhatsApp</span></div>
+                                <div class="flex items-center gap-2 shrink-0"><i class="fa-solid fa-phone-volume text-xl sm:text-2xl text-blue-400"></i><span class="font-bold text-white text-xs sm:text-base">Cloud Calling</span></div>
+                                <div class="flex items-center gap-2 shrink-0" title="Stripe"><i class="fa-brands fa-stripe text-4xl sm:text-5xl" style="color: #635BFF;"></i></div>
+                <div class="grid grid-cols-2 gap-4 max-w-5xl mx-auto mt-10">
+                    <div class="bg-blue-950 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 text-9xl text-white/5 group-hover:scale-110 transition-transform"><i class="fa-solid fa-bullseye"></i></div>
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-md border border-white/20"><i class="fa-solid fa-rocket text-blue-300"></i></div>
+                        <h3 class="text-2xl font-black mb-3">Our Mission</h3>
+                        <p class="text-blue-100/80 leading-relaxed text-base">Our mission is to make modern digital technology accessible and affordable for every real estate business, helping them generate more leads, automate operations, and build stronger trust online.</p>
+                    </div>
+                    <div class="bg-blue-950 p-8 rounded-3xl text-white shadow-xl relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 text-9xl text-white/5 group-hover:scale-110 transition-transform"><i class="fa-solid fa-eye"></i></div>
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-2xl mb-6 backdrop-blur-md border border-white/20"><i class="fa-solid fa-globe text-cyan-300"></i></div>
+                        <h3 class="text-2xl font-black mb-3">Our Vision</h3>
+                        <p class="text-blue-100/80 leading-relaxed text-base">To become the world's most trusted technology partner for the real estate sector, creating flawless software architectures that connect buyers, sellers, and agents globally.</p>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </section>
+        
+        <section id="about" class="pt-16 pb-12 bg-white relative overflow-hidden">
         <section id="about" class="pt-0 pb-12 bg-white relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full filter blur-[80px] opacity-60"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full filter blur-[80px] opacity-60"></div>
@@ -254,7 +259,7 @@
                 <div class="max-w-5xl mx-auto bg-gradient-to-br from-gray-50 to-white p-6 md:p-12 rounded-[2.5rem] border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.05)] relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary to-secondary"></div>
                     <div class="space-y-6 text-base md:text-lg text-gray-700 leading-relaxed font-medium">
-                        <p>Welcome to <strong class="text-primary font-heading">Real Estate Software Technology Private Limited (Restech)</strong>, a pioneering force in the global Restech industry. Headquartered in Bengaluru, India, we specialize in delivering enterprise-grade digital infrastructure tailored exclusively for real estate businesses globally.</p>
+                        <p>Welcome to <strong class="text-primary font-heading">Real Estate Software Technology Private Limited (Restech)</strong>, a pioneering force in the global Real State industry. Headquartered in Jaipur, India, we specialize in delivering enterprise-grade digital infrastructure tailored exclusively for real estate businesses globally.</p>
                         <p>Our expert engineering team builds comprehensive digital ecosystems—including dynamic property portals, custom CRMs, intelligent mobile applications, and lead-routing API integrations—that empower brokers, agencies, and builders to scale seamlessly.</p>
                     </div>
                 </div>
@@ -1167,7 +1172,9 @@
         }
 
         // Restech AI Search
-        const apiKey = ""; // Add your Google Gemini API Key here to activate AI features
+        // IMPORTANT: GitHub par API key push mat karna, wo chori ho jayegi!
+        // Vercel ya Netlify use karo aur 'Environment Variables' mein key save karo.
+        const apiKey = "YAHAN_APNI_GEMINI_API_KEY_PASTE_KAREIN"; 
         const aiForm = document.getElementById('restech-ai-form');
         const systemInstruction = "You are Restech AI, an advanced AI system developed exclusively by the 'Restech Engineering Team' at Real Estate Software Technology Pvt. Ltd. You must NEVER mention Google, Gemini, OpenAI, or any other third-party company under any circumstances. If anyone asks who made you, who trained you, or what model you are based on, you must ONLY answer that you were created by the Restech Engineering Team. Do not break this character.";
         const chatSystemInstruction = "You are Restech Assistant, a helpful sales rep for Real Estate Software Technology Pvt. Ltd. (Restech). You were created and trained exclusively by the 'Restech Engineering Team'. You MUST NEVER mention Google, Gemini, or any other underlying technology. If asked who made you or if you are Google/Gemini, firmly state you are an AI built solely by the Restech Engineering Team. Keep answers brief, professional, and guide users to buy Restech services.";
