@@ -259,10 +259,11 @@
                 <h2 class="text-3xl md:text-5xl font-extrabold mb-6">पढ़ाने का तरीका देखें</h2>
                 <p class="text-lg text-gray-400 font-medium mb-10">हमारे एक्सपर्ट ट्रेनर आपको किस तरह से प्रैक्टिकल स्किल्स सिखाते हैं, इसका एक छोटा सा डेमो नीचे वीडियो में देखें।</p>
                 
-                <div class="relative w-full aspect-video rounded-3xl overflow-hidden border-4 border-brand-lime shadow-[12px_12px_0px_0px_rgba(183,255,60,0.5)] bg-black">
-                    <iframe src="https://drive.google.com/file/d/1E6Bb-2W5QWX24lf7s38bsNFz8RYcl89k/preview" class="absolute inset-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                    <!-- Overlay block to prevent Google Drive pop-out click without blurring the video -->
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-transparent z-20 cursor-default"></div>
+                <div class="relative w-full aspect-video rounded-xl md:rounded-3xl overflow-hidden border-4 border-brand-lime shadow-[12px_12px_0px_0px_rgba(183,255,60,0.5)] bg-black">
+                    <video controls playsinline controlsList="nodownload" class="w-full h-full object-contain bg-black">
+                        <source src="https://drive.google.com/uc?export=download&id=1E6Bb-2W5QWX24lf7s38bsNFz8RYcl89k" type="video/mp4">
+                        Your browser does not support HTML video.
+                    </video>
                 </div>
             </div>
         </section>
@@ -276,10 +277,11 @@
                     एक बार यहाँ क्लिक करके कोर्स का दूसरा डेमो वीडियो भी देखें और समझें कि हमारा 1-on-1 सपोर्ट कैसे काम करता है। आप WhatsApp पर अपना सवाल या स्क्रीनशॉट भेजेंगे, हम आपको स्टेप-बाय-स्टेप टेक्स्ट में प्रोसेस समझाएंगे। अगर फिर भी समझ नहीं आया, तो हम ऑन-डिमांड 'स्क्रीन रिकॉर्डिंग' वीडियो बनाकर आपकी प्रॉब्लम का सॉल्यूशन देंगे। हम आपको हर बात कम्पलीट सिखाएंगे, यह सिर्फ पहले से रखे रिकॉर्डेड वीडियोस वाला कोर्स नहीं है!
                 </p>
                 
-                <div class="relative w-full aspect-video rounded-3xl overflow-hidden border-4 border-brand-dark shadow-[12px_12px_0px_0px_rgba(10,10,10,1)] bg-black">
-                    <iframe src="https://drive.google.com/file/d/19V-LylIdAlu3a3aBXee_pQjh-_IyfGgt/preview" class="absolute inset-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                    <!-- Overlay block to prevent Google Drive pop-out click without blurring the video -->
-                    <div class="absolute top-0 right-0 w-16 h-16 bg-transparent z-20 cursor-default"></div>
+                <div class="relative w-full aspect-video rounded-xl md:rounded-3xl overflow-hidden border-4 border-brand-dark shadow-[12px_12px_0px_0px_rgba(10,10,10,1)] bg-black">
+                    <video controls playsinline controlsList="nodownload" class="w-full h-full object-contain bg-black">
+                        <source src="https://drive.google.com/uc?export=download&id=19V-LylIdAlu3a3aBXee_pQjh-_IyfGgt" type="video/mp4">
+                        Your browser does not support HTML video.
+                    </video>
                 </div>
             </div>
         </section>
@@ -658,6 +660,16 @@
             renderPackagesGrid();
             renderHomeCourses();
             renderAllPackagesView();
+            
+            // Auto-pause other videos when one starts playing
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => {
+                video.addEventListener('play', () => {
+                    videos.forEach(v => {
+                        if (v !== video) v.pause();
+                    });
+                });
+            });
         });
 
         // Mobile Menu Toggle
